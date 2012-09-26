@@ -1,6 +1,6 @@
 Title: Model Driven Re-engineering of Jease.
 
-Group: LENYA awesome4.
+Group: Jease awesome4.
 
 Group members:
 
