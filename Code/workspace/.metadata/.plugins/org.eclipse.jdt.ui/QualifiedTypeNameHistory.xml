@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.eclipse.xtext.conversion.ValueConverter"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.conversion.IValueConverter"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.conversion.impl.AbstractNullSafeConverter"/>
+<fullyQualifiedTypeName name="java.text.ParseException"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.parser.ParseException"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.parser.antlr.SyntaxErrorMessageProvider"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.nodemodel.SyntaxErrorMessage"/>
+<fullyQualifiedTypeName name="mddProject.concreteSyntax.CustomDateFormatException"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.ui.editor.quickfix.Fix"/>
+<fullyQualifiedTypeName name="mddProject.concreteSyntax.JDSLRuntimeModule"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.validation.Issue"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.ui.editor.model.edit.IModification"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.ui.editor.model.edit.IModificationContext"/>
+<fullyQualifiedTypeName name="org.eclipse.xtext.ui.editor.model.IXtextDocument"/>
+<fullyQualifiedTypeName name="java.text.DateFormat"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.TimeZone"/>
+<fullyQualifiedTypeName name="jdsl.ContentModel"/>
+<fullyQualifiedTypeName name="jdsl.impl.UserImpl"/>
+<fullyQualifiedTypeName name="mddProject.concreteSyntax.test"/>
+<fullyQualifiedTypeName name="jdsl.JdslPackage.Literals"/>
+<fullyQualifiedTypeName name="jdsl.JdslPackage"/>
+<fullyQualifiedTypeName name="jdsl.impl.CMSImpl"/>
+<fullyQualifiedTypeName name="jdsl.JdslFactory"/>
+<fullyQualifiedTypeName name="jdsl.CMS"/>
+<fullyQualifiedTypeName name="mddProject.concreteSyntax.generator.JDSLGenerator"/>
+</qualifiedTypeNameHistroy>

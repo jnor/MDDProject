@@ -1,0 +1,64 @@
+\pagestyle{headings}  % switches on printing of running heads
+
+%\addtocmark{Hamiltonian Mechanics} % additional mark in the TOC
+
+\title{Lalalalalallalal la lal ala la l}
+
+\chapter*{Introduction}
+Content Management Systems are used for creating and controlling content of web
+applications. The concept of a Content Management System (CMS) reaches back to the
+early 1970s to the era of Mainframe Content Managers.
+
+With the advent of the internet, the requirements of Content Management Systems
+have been constantly increasing, resulting in very complex systems. The increase in
+complexity has led to the development of many web frameworks which all aim to assist
+in the implementation of web applications.
+
+We acknowledge that the architecture and specifics of Content Management Systems can
+be hard to master. Domain experts, such as web designers, also spend increasing amount of
+time and resources on customizing the Content Management Systems to meet customer demands.
+
+
+
+\section*{State of the art}
+Viðar Svansson and Roberto E. Lopez-Herrejon1, address the issue of increased complexity
+of Content Management Systems and the needs for a domain-specific language for the
+implementation of applications. The paper of Viðar Svansson and Roberto E. Lopez-Herrejon
+also contains a description of a web specific language (WSL). The purpose of WSL is to increase
+the productivity of developers by describing the business domain at a higher abstraction level
+and automate the implementation process.
+
+Eelco Visser has addressed the same issue of Content Management Systems and has developed a
+domain-specific language, WebDSL2 , for the development of web applications. These papers
+present generic domain-specific languages which are not aimed for any specific framework or
+programming language.
+
+
+\section*{Specific problem}
+Content is information intended for a specific end-user audience, examples of
+content are pictures and text documents.
+
+Content-types3 are the heart of a Content Management System as they define the properties of the
+content. For example a picture must contain a title, description and an image file. Many Content
+Management Systems come with predefined content-types; however these are rarely enough to meet
+the demands of the customer. To meet the demands, new content-types must be created and added to
+the Content Management System.
+
+The creation of customized content-types can be a very time-consuming process which involves
+knowledge of the Content Management System architecture. Even Content Management Systems which
+promote ‘easy to extend’ functionality, still require several steps of manual implementation of
+the customized content-types.
+
+The steps involve writing a description of the content-type, writing an editor for the content-type,
+writing a HTML view of the content-type and finally registering the new content-type. This project
+focuses on automating the steps required in the creation of new content-types, thus enabling the
+domain experts to describe the content-type at a higher abstraction level. We will conduct an
+architectural study and analysis of a chosen open source Content Management System Jease.
+
+From this study we will raise the aspect of customization to a higher level of
+abstraction by developing a domain-specific language which will facilitate creation of
+customized content-types. This domain-specific language will assist in the process of creation of new
+content-types by automating all of the required steps. We will also implement an editor for the
+domain-specific language and transform the language into concrete code.
+
+

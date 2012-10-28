@@ -1,0 +1,262 @@
+/**
+ */
+package jdsl;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>CMS Enum</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
+ * @see jdsl.JdslPackage#getCMSEnum()
+ * @model
+ * @generated
+ */
+public enum CMSEnum implements Enumerator {
+	/**
+	 * The '<em><b>Jease</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #JEASE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	JEASE(0, "Jease", "Jease"),
+
+	/**
+	 * The '<em><b>N2</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #N2_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	N2(1, "N2", "N2"),
+
+	/**
+	 * The '<em><b>Concrete5</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CONCRETE5_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CONCRETE5(2, "Concrete5", "Concrete5"),
+
+	/**
+	 * The '<em><b>Plone</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #PLONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	PLONE(3, "Plone", "Plone");
+
+	/**
+	 * The '<em><b>Jease</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Jease</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #JEASE
+	 * @model name="Jease"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int JEASE_VALUE = 0;
+
+	/**
+	 * The '<em><b>N2</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>N2</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #N2
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int N2_VALUE = 1;
+
+	/**
+	 * The '<em><b>Concrete5</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Concrete5</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CONCRETE5
+	 * @model name="Concrete5"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CONCRETE5_VALUE = 2;
+
+	/**
+	 * The '<em><b>Plone</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Plone</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PLONE
+	 * @model name="Plone"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PLONE_VALUE = 3;
+
+	/**
+	 * An array of all the '<em><b>CMS Enum</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static final CMSEnum[] VALUES_ARRAY =
+		new CMSEnum[] {
+			JEASE,
+			N2,
+			CONCRETE5,
+			PLONE,
+		};
+
+	/**
+	 * A public read-only list of all the '<em><b>CMS Enum</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final List<CMSEnum> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+	/**
+	 * Returns the '<em><b>CMS Enum</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static CMSEnum get(String literal) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			CMSEnum result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>CMS Enum</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static CMSEnum getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			CMSEnum result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>CMS Enum</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static CMSEnum get(int value) {
+		switch (value) {
+			case JEASE_VALUE: return JEASE;
+			case N2_VALUE: return N2;
+			case CONCRETE5_VALUE: return CONCRETE5;
+			case PLONE_VALUE: return PLONE;
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private CMSEnum(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+} //CMSEnum
