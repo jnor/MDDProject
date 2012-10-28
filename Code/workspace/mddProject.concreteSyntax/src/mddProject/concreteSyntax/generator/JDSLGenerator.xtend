@@ -125,19 +125,24 @@ class JDSLGenerator implements IGenerator {
 	setLocation(getLocation().replace(target, replacement));
 	}
 
-	public Meeting copy(boolean recursive) {
-	Meeting meeting = (Meeting) super.copy(recursive);
+	public «ct.name.toUpperCase» copy(boolean recursive) {
+	«ct.name.toUpperCase» «ct.name» = («ct.name.toUpperCase») super.copy(recursive);
 	meeting.setTopic(getTopic());
 	meeting.setLocation(getLocation());
 	meeting.setStart(getStart());
 	meeting.setStop(getStop());
-	return meeting;
+	return «ct.name»;
 	}
 	}
 	« »
 	'''
 	
 	def toJeaseProperty(Property p)
+	'''
+	
+	'''
+	
+    def toJeasePropertyField(Property p)
 	'''
 	
 	'''
