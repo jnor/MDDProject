@@ -14,6 +14,8 @@ import jdsl.ContentType
 import java.util.ArrayList
 import jdsl.Property
 class JDSLGenerator implements IGenerator {
+
+	//No freaking idea, what I'm doing. An attempt at Hello Gunn's World ;)
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val model = resource.contents.head as ContentModel

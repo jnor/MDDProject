@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/mddProject_AbstractSyntax/src" modelPluginID="mddProject_AbstractSyntax"
+    modelName="Jdsl" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false">
+  <foreignModel>jdsl.ecore</foreignModel>
+  <genPackages prefix="Jdsl" disposableProviderFactory="true" ecorePackage="jdsl.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="jdsl.ecore#//CMSEnum">
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//CMSEnum/Jease"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//CMSEnum/N2"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//CMSEnum/Concrete5"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//CMSEnum/Plone"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="jdsl.ecore#//TypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/char"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/string"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/int"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/float"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/double"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/boolean"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/byte"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//TypeEnum/date"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="jdsl.ecore#//AccessLevelEnum">
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//AccessLevelEnum/public"/>
+      <genEnumLiterals ecoreEnumLiteral="jdsl.ecore#//AccessLevelEnum/private"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="jdsl.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//ContentModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//ContentModel/hasElements"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//ContentType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//ContentType/hasProperties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//ContentType/hasVersions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//ContentType/modifiedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//ContentType/guid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//ContentType/visible"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//Property/Datatype"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//Property/accessModifer"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="jdsl.ecore#//Type"/>
+    <genClasses ecoreClass="jdsl.ecore#//SingleType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//SingleType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//ArrayType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//ArrayType/type"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//Role">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//Role/types"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//Role/isAdmin"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//User">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//User/hasRole"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//User/firstname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//User/lastname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//User/login"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//User/password"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//User/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//User/disabled"/>
+    </genClasses>
+    <genClasses ecoreClass="jdsl.ecore#//Version"/>
+    <genClasses ecoreClass="jdsl.ecore#//CMS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//CMS/address_url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//CMS/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//CMS/username"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//CMS/password"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

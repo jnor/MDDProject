@@ -12,7 +12,10 @@ import jdsl.NamedElement
 import jdsl.CMS
 import jdsl.ContentType
 import java.util.ArrayList
+import jdsl.Property
 class JDSLGenerator implements IGenerator {
+
+	//No freaking idea, what I'm doing. An attempt at Hello Gunn's World ;)
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val model = resource.contents.head as ContentModel
@@ -39,11 +42,6 @@ class JDSLGenerator implements IGenerator {
 			for(CMS cms : cmsList)
 			{
 				
-				if(cms.type.toString.equals("Jease"))
-				{
-					toJease(null, fsa)
-				} 
-				
 					for(ContentType ct : contentList)
 					{
 						switch cms.type
@@ -67,27 +65,111 @@ class JDSLGenerator implements IGenerator {
 	
 	def toJease(ContentType ct,IFileSystemAccess fsa)
 	{
-		fsa.generateFile("cmsOutput.txt", "I,ve been called from toJease method")
-	}
-	def toJeaseDomainClass()
-	{
-		
-	}
+		fsa.generateFile(ct.name + ".java", toJeaseDomainClass(ct))
+	    fsa.generateFile(ct.name +"Editor"+".java", toJeaseEditorClass(ct))
+		fsa.generateFile(ct.name +".jsp", toJeaseJSP(ct))
+	    fsa.generateFile(ct.name +".xml", toJeaseXML(ct))
 	
-	def toJeaseEditorClass()
-	{
-		
 	}
+	def toJeaseDomainClass(ContentType ct)
+	'''
+	import java.util.Date;
+	import jease.cms.domain.Content;
+
+	public class «ct.name.toUpperCase» extends Content {
+
+	private String topic;
+	private String location;
+	private Date start;
+	private Date stop;
+
+	public String getTopic() {
+	return topic;
+	}
+
+	public void setTopic(String topic) {
+	this.topic = topic;
+	}
+
+	public String getLocation() {
+	return location;
+	}
+
+	public void setLocation(String location) {
+	this.location = location;
+	}
+
+	public Date getStart() {
+	return start;
+	}
+
+	public void setStart(Date start) {
+	this.start = start;
+	}
+
+	public Date getStop() {
+	return stop;
+	}
+
+	public void setStop(Date stop) {
+	this.stop = stop;
+	}
+
+	public StringBuilder getFulltext() {
+	return super.getFulltext().append("\n")
+	.append(topic).append("\n")
+	.append(location);
+	}
+
+	public void replace(String target, String replacement) {
+	super.replace(target, replacement);
+	setTopic(getTopic().replace(target, replacement));
+	setLocation(getLocation().replace(target, replacement));
+	}
+
+	public Meeting copy(boolean recursive) {
+	Meeting meeting = (Meeting) super.copy(recursive);
+	meeting.setTopic(getTopic());
+	meeting.setLocation(getLocation());
+	meeting.setStart(getStart());
+	meeting.setStop(getStop());
+	return meeting;
+	}
+	}
+	« »
+	'''
 	
-	def toJeaseHTML()
-	{
-		
-	}
+	def toJeaseProperty(Property p)
+	'''
 	
-	def toJeaseXML()
-	{
-		
-	}
+	'''
+	
+	def toJeaseEditorClass(ContentType ct)
+    '''
+	
+	import jease.cms.web.content.editor.ContentEditor;
+	import jfix.zk.Datetimefield;
+	import jfix.zk.RichTextarea;
+	import jfix.zk.Textfield;
+	
+	'''
+	
+	def toJeaseJSP(ContentType ct)
+    '''
+	
+	'''
+	
+	def toJeaseXML(ContentType ct)
+    '''
+    <jease>
+    <component>
+    		<domain>«ct.name.toUpperCase»</domain>
+    		<editor>«ct.name.toUpperCase»Editor</editor>
+    		<icon></icon>
+    		<view>/custom/«ct.name.toUpperCase».jsp</view>
+    </component>
+    </jease>
+	'''
 	
 	def toN2Class(ContentType ctm,IFileSystemAccess fsa)
 	{
