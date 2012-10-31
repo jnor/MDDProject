@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import jdsl.ContentModel
-import jdsl.CMSEnum
 import jdsl.NamedElement
 import jdsl.CMS
 import jdsl.ContentType
@@ -16,7 +15,6 @@ import jdsl.Property
 class JDSLGenerator implements IGenerator {
 
 	//No freaking idea, what I'm doing. An attempt at Hello Gunn's World ;)
-	//Lisa:)
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val model = resource.contents.head as ContentModel
@@ -66,10 +64,10 @@ class JDSLGenerator implements IGenerator {
 	
 	def toJease(ContentType ct,IFileSystemAccess fsa)
 	{
-		fsa.generateFile(ct.name + ".java", toJeaseDomainClass(ct))
-	    fsa.generateFile(ct.name +"Editor"+".java", toJeaseEditorClass(ct))
-		fsa.generateFile(ct.name +".jsp", toJeaseJSP(ct))
-	    fsa.generateFile(ct.name +".xml", toJeaseXML(ct))
+		fsa.generateFile(ct.name.toFirstUpper + ".java", toJeaseDomainClass(ct))
+	    fsa.generateFile(ct.name.toFirstUpper +"Editor"+".java", toJeaseEditorClass(ct))
+		fsa.generateFile(ct.name.toFirstUpper +".jsp", toJeaseJSP(ct))
+	    fsa.generateFile(ct.name.toFirstUpper +".xml", toJeaseXML(ct))
 	
 	}
 	def toJeaseDomainClass(ContentType ct)
@@ -77,110 +75,404 @@ class JDSLGenerator implements IGenerator {
 	import java.util.Date;
 	import jease.cms.domain.Content;
 
-	public class «ct.name.toUpperCase» extends Content {
+	public class «ct.name.toFirstUpper» extends Content {
 
-	private String topic;
-	private String location;
-	private Date start;
-	private Date stop;
+	
+	«FOR p : ct.hasProperties»
+				«
+				p.toJeasePropertyField
+				
+				»
+			«ENDFOR»
 
-	public String getTopic() {
-	return topic;
-	}
-
-	public void setTopic(String topic) {
-	this.topic = topic;
-	}
-
-	public String getLocation() {
-	return location;
-	}
-
-	public void setLocation(String location) {
-	this.location = location;
-	}
-
-	public Date getStart() {
-	return start;
-	}
-
-	public void setStart(Date start) {
-	this.start = start;
-	}
-
-	public Date getStop() {
-	return stop;
-	}
-
-	public void setStop(Date stop) {
-	this.stop = stop;
-	}
+	«FOR p : ct.hasProperties»
+				«p.toJeaseProperty»
+			«ENDFOR»
 
 	public StringBuilder getFulltext() {
 	return super.getFulltext().append("\n")
-	.append(topic).append("\n")
-	.append(location);
+		«FOR p : ct.hasProperties»
+				.append(«p.name.toLowerCase»).append("\n")
+			«ENDFOR»
+	.append("");
 	}
 
 	public void replace(String target, String replacement) {
 	super.replace(target, replacement);
-	setTopic(getTopic().replace(target, replacement));
-	setLocation(getLocation().replace(target, replacement));
+	«FOR p : ct.hasProperties»
+	«switch p.type
+	{
+		case p.type.toString.toLowerCase.equals("string") : p.insertStringReplacement
 	}
+	»
+			«ENDFOR»
+		}
 
-	public «ct.name.toUpperCase» copy(boolean recursive) {
-	«ct.name.toUpperCase» «ct.name» = («ct.name.toUpperCase») super.copy(recursive);
-	meeting.setTopic(getTopic());
-	meeting.setLocation(getLocation());
-	meeting.setStart(getStart());
-	meeting.setStop(getStop());
+	public «ct.name.toFirstUpper» copy(boolean recursive) {
+	«ct.name.toFirstUpper» «ct.name.toLowerCase» = («ct.name.toString.toFirstUpper»)super.copy(recursive);
+		«FOR p : ct.hasProperties»
+						«ct.name.toLowerCase».set«p.name.toString.toFirstUpper»(get«p.name.toString.toFirstUpper»());
+			«ENDFOR»
+
 	return «ct.name»;
 	}
 	}
-	« »
 	'''
-	
+	def insertStringReplacement(Property p)
+	'''
+		set«p.name.toFirstUpper»(get«p.name.toString.toFirstUpper»().replace(target, replacement));
+	'''
+
 	def toJeaseProperty(Property p)
+		'''
+	   public «p.determineJeasePropertyType» get«p.name.toString.toString.toFirstUpper»() {
+	   return «p.name.toString.toLowerCase»;
+	   }
+
+	   public void set«p.name.toString.toFirstUpper»(«p.determineJeasePropertyType» «p.name.toString.toLowerCase»
+	   ) {
+	   this.«p.name.toString.toLowerCase» = «p.name.toString.toLowerCase»;
+	   }
 	'''
 	
+	def toJeasePropertyField(Property p)
+	'''
+	«p.accessModifer.literal.toString.toLowerCase» «p.determineJeasePropertyType» «p.name.toString.toLowerCase»;
 	'''
 	
-    def toJeasePropertyField(Property p)
+    def determineJeasePropertyType(Property p)
+	'''
+	«
+	switch p.type.literal
+	{
+	case p.type.literal.equals("string") : toJeasePropertyCaseString(p)
+	case p.type.literal.equals("date") : toJeasePropertyCaseDate(p)
+	default : toJeasePropertyFieldNormal(p)
+	}
+	»	
 	'''
 	
-	'''
+	def toJeasePropertyCaseString(Property p)
+	'''String'''
+	
+	def toJeasePropertyCaseDate(Property p)
+	'''Date'''
+	
+	def toJeasePropertyFieldNormal(Property p)
+	'''«p.type.literal.toString.toLowerCase»'''
+	
 	
 	def toJeaseEditorClass(ContentType ct)
     '''
+import jease.cms.web.content.editor.ContentEditor;
+import jfix.zk.Datetimefield;
+import jfix.zk.RichTextarea;
+import jfix.zk.Textfield;
+
+public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.name.toString.toFirstUpper»> {
+
+ 	«FOR p : ct.hasProperties»
+ 	«if(p.type.literal.equals("date"))
+ 	{
+ 	 insertDateField(p) 	
+ 	}
+ 	else
+ 	{
+ 		insertNonDateField(p)
+ 	}
+ 	 » 					
+			«ENDFOR»
+
+ public «ct.name.toString.toFirstUpper»Editor() {
+ }
+
+ public void init() {
+   	«FOR p : ct.hasProperties»
+   	add("«p.name.toFirstUpper»", «p.name.toLowerCase»);
+			«ENDFOR»
+
+ }
+
+ public void load() {
+ 	
+ 	«FOR p : ct.hasProperties»
+ 	«if(p.type.literal.toLowerCase.equals("date"))
+ 	{
+ 	 setDate(p) 	
+ 	}
+ 	else
+ 	{
+ 		setText(p)
+ 	}
+ 	 » 					
+			«ENDFOR»
+ }
+
+ public void validate() {
+ 	 	«FOR p : ct.hasProperties»
+ 	 	validate(«p.name.toLowerCase».isEmpty(), "«p.name.toString.toFirstUpper» required");				
+			«ENDFOR»
+ }
+
+ public void save() {
+  	«FOR p : ct.hasProperties»
+ 	«
+ 	switch p.type.literal
+ 	{
+ 		case p.type.literal.toLowerCase.equals("date") : getDate(p) 
+ 		case p.type.literal.toLowerCase.equals("string") : getText(p)
+ 		case p.type.literal.toLowerCase.equals("int") : getInt(p)
+ 		case p.type.literal.toLowerCase.equals("float") : getFloat(p)
+ 		case p.type.literal.toLowerCase.equals("double") : getDouble(p)
+ 	}
+ 	 » 					
+			«ENDFOR»
+ }
+ }
+	'''
 	
-	import jease.cms.web.content.editor.ContentEditor;
-	import jfix.zk.Datetimefield;
-	import jfix.zk.RichTextarea;
-	import jfix.zk.Textfield;
+	def getInt(Property p)
+	'''
+		  getNode().set«p.name.toString.toFirstUpper»(parseInt(«p.name.toLowerCase».getText()));
+	'''
 	
+	def getFloat(Property p)
+	'''
+		  getNode().set«p.name.toString.toFirstUpper»(parseFloat(«p.name.toLowerCase».getText());
+	'''
+	def getDouble(Property p)
+	'''
+		  getNode().set«p.name.toString.toFirstUpper»(parseDouble(«p.name.toLowerCase».getText());
+	'''
+	
+	def getDate(Property p)
+	'''
+		  getNode().set«p.name.toString.toFirstUpper»(«p.name.toLowerCase».getDate());
+	'''
+	
+	def getText(Property p)
+	'''
+	  getNode().set«p.name.toString.toFirstUpper»(«p.name.toLowerCase».getText());
+	'''
+	
+	def setDate(Property p)
+	'''
+	  	«p.name.toLowerCase».setDate(getNode().get«p.name.toFirstUpper»());
+	'''
+	
+	def setText(Property p)
+	'''
+	  «p.name.toLowerCase».setText(getNode().get«p.name.toFirstUpper»());
+	'''
+	
+	def insertDateField(Property p)
+	'''
+	Datetimefield «p.name.toLowerCase» = new Datetimefield();
+	'''
+	
+	def insertNonDateField(Property p)
+	'''
+	 Textfield «p.name.toLowerCase»  = new Textfield();
+	'''
+	
+	def getDateView(ContentType ct, Property p)
+	'''
+	<tr>
+	<td><b>«p.name.toUpperCase»:</b></td>
+	<td><%=String.format("%1$tF %1$tR",
+                  «ct.name.toLowerCase».get«p.name.toString.toFirstUpper»())%></td>
+	</tr>
+	'''
+	
+	def getTextView(ContentType ct, Property p)
+	'''
+	 <tr>
+	 <td><b>«p.name.toFirstUpper»:</b></td>
+	 <td><%=«ct.name.toLowerCase».get«p.name.toString.toFirstUpper»()%></td>
+	 </tr>
 	'''
 	
 	def toJeaseJSP(ContentType ct)
     '''
-	
+<%@page import="«ct.name.toString.toFirstUpper»"%>
+<%
+ «ct.name.toString.toFirstUpper» «ct.name.toLowerCase» = («ct.name.toString.toFirstUpper»)request.getAttribute("Node");
+%>
+<h1><%=«ct.name.toLowerCase».getTitle()%></h1>
+<table>
+	«FOR p : ct.hasProperties»
+ 	«if(p.type.literal.equals("date"))
+ 	{
+ 	  getDateView(ct, p) 	
+ 	}
+ 	else
+ 	{
+ 		getTextView(ct, p)
+ 	}
+ 	 » 					
+			«ENDFOR»
+</table>
+
 	'''
-	
+	//Done
 	def toJeaseXML(ContentType ct)
     '''
     <jease>
     <component>
-    		<domain>«ct.name.toUpperCase»</domain>
-    		<editor>«ct.name.toUpperCase»Editor</editor>
+    		<domain>«ct.name.toString.toFirstUpper»</domain>
+    		<editor>«ct.name.toString.toFirstUpper»Editor</editor>
     		<icon></icon>
-    		<view>/custom/«ct.name.toUpperCase».jsp</view>
+    		<view>«ct.name.toString.toFirstUpper».jsp</view>
     </component>
     </jease>
 	'''
 	
-	def toN2Class(ContentType ctm,IFileSystemAccess fsa)
+	def toN2Class(ContentType ct,IFileSystemAccess fsa)
 	{
-		//Note that N2 combines domain class and editor into one class file thanks to C# attributes. 
+				fsa.generateFile(ct.name.toFirstUpper + ".cs", toN2ClassFile(ct))
+	    		fsa.generateFile("default" +".aspx.cs", toN2CodeBehindFile(ct))
+				fsa.generateFile("default" +".aspx", toN2AspxFile(ct))
 	}
+	
+	def toN2ClassFile(ContentType ct)
+	'''
+	namespace MySite.Items
+	{
+		[N2.Details.WithEditableTitle("«ct.name.toFirstUpper»",10)]
+		public class «ct.name.toFirstUpper» : N2.ContentItem
+		{
+			
+		«FOR p : ct.hasProperties»
+				«
+				p.toN2PropertyField
+				»
+			«ENDFOR»
+			
+			«FOR p : ct.hasProperties»
+				«
+				p.toN2Property
+				»
+			«ENDFOR»
+	}
+	'''
+	
+	def toN2PropertyField(Property p)
+	'''
+	«p.accessModifer.literal.toString.toLowerCase» «p.determineN2PropertyType» «p.name.toString.toLowerCase»;
+	'''
+	
+	def toN2Property(Property p)
+	'''
+		«
+		switch p.type
+		{
+			case p.type.literal.toLowerCase.equals("string") : p.toN2PropertyString
+		    case p.type.literal.toLowerCase.equals("date") : p.toN2PropertyDateTime
+		    default:  p.toN2PropertyNormal
+		}
+		
+		»
+	'''
+	
+	def toN2PropertyString(Property p)
+	'''
+		[N2.Details.EditableTextBox("«p.name.toString.toUpperCase»",20)]
+			[N2.Web.UI.EditorModifier("TextMode", TextBoxMode.MultiLine)]
+			public String «p.name.toString.toLowerCase»
+			{
+				get {return this.«p.name.toString.toLowerCase»;}
+				set {this.«p.name.toString.toLowerCase» = value;}
+			}
+	'''
+	def toN2PropertyDateTime(Property p)
+	'''
+		[N2.Details.Editable("«p.name.toString.toUpperCase»", typeof(SelectedDate), "SelectedDate", 20)]
+			public DateTime «p.name.toString.toLowerCase»
+			{
+				get {return this.«p.name.toString.toLowerCase»;}
+				set {this.«p.name.toString.toLowerCase» = value;}
+			}
+	'''
+	
+	def toN2PropertyNormal(Property p)
+	'''
+		[N2.Details.EditableTextBox("«p.name.toString.toUpperCase»",20)]
+			public String «p.name.toString.toLowerCase»
+			{
+				get {return this.«p.name.toString.toLowerCase»;}
+				set {this.«p.name.toString.toLowerCase» = value;}
+			}
+	'''
+	
+	def toN2CodeBehindFile(ContentType ct)
+	'''
+	using System.Web.Security;
+	using System.Web.UI;
+	using System.Web.UI.WebControls;
+	using System.Web.UI.WebControls.WebParts;
+	using System.Web.UI.HTMLControls;
+	
+	namespace MySite
+	{
+		public partial class _Default : N2.Web.UI.Page<Items.«ct.name.toFirstUpper»>
+		{
+			protected void Page_Load(object sender, EventArgs e)	
+		}
+	}
+	'''
+	
+	
+	def toN2AspxFile(ContentType ct)
+	'''
+	<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    <h1><%= CurrentPage.Title %></h1>
+    		«FOR p : ct.hasProperties»
+				«
+				p.toN2PropertyAspx
+				»
+			«ENDFOR»
+    </div>
+    </form>
+</body>
+</html>
+	
+	'''
+	
+	def toN2PropertyAspx(Property p)
+	'''
+	 <n2: Display PropertyName="«p.name.toUpperCase»" runat="server" />
+	'''
+	def determineN2PropertyType(Property p)
+	'''
+	«
+	switch p.type.literal
+	{
+	case p.type.literal.equals("string") : toN2PropertyCaseString(p)
+	case p.type.literal.equals("date") : toN2PropertyCaseDate(p)
+	default : toJeasePropertyFieldNormal(p)
+	}
+	»	
+	'''
+	
+	def toN2PropertyCaseString(Property p)
+	'''String'''
+	
+	def toN2PropertyCaseDate(Property p)
+	'''DateTime'''
+	
+	def toN2PropertyFieldNormal(Property p)
+	'''«p.type.literal.toString.toLowerCase»'''
+	
 	
 	def toConcrete5(ContentType ct,IFileSystemAccess fsa)
 	{
@@ -192,6 +484,6 @@ class JDSLGenerator implements IGenerator {
 	
 	def toPlone(ContentType ct,IFileSystemAccess fsa)
 	{
-		//Louis was here: Checking push.
+			fsa.generateFile("ErrorLogJDSL.txt", "An error has been encountered. Error code 1: The CMS is currently not supported in Code generator. ")
 	}
 }

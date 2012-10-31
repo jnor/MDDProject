@@ -18,11 +18,6 @@ NamedElement returns NamedElement:
 //ContentModel | ContentType | Property | SingleType | ArrayType | Role | User | Version | CMS | AccessLevel;
 
 
-Type returns Type:
-	SingleType | ArrayType;
-
-
-
 EString returns ecore::EString:
 	STRING | ID;
 
@@ -42,24 +37,7 @@ Property returns Property:
 	'{'
 	    'Name' '=' name=EString
 		'accessModifer' '=' accessModifer=AccessLevelEnum
-		('Datatype' '=' Datatype=Type)?
-	'}';
-
-
-SingleType returns SingleType:
-	{SingleType}
-	'SingleType'
-	'{'
-	   'Name' '=' name=EString
-		('type''=' type=TypeEnum)?
-	'}';
-
-ArrayType returns ArrayType:
-	{ArrayType}
-	'ArrayType'
-	'{'
-	    'Name' '=' name=EString
-		('type' '=' type=TypeEnum)?
+		('Type' '=' type=TypeEnum)?
 	'}';
 
 Role returns Role:
