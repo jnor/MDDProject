@@ -93,29 +93,6 @@ public class JdslSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case JdslPackage.TYPE: {
-				Type type = (Type)theEObject;
-				T result = caseType(type);
-				if (result == null) result = caseNamedElement(type);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JdslPackage.SINGLE_TYPE: {
-				SingleType singleType = (SingleType)theEObject;
-				T result = caseSingleType(singleType);
-				if (result == null) result = caseType(singleType);
-				if (result == null) result = caseNamedElement(singleType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case JdslPackage.ARRAY_TYPE: {
-				ArrayType arrayType = (ArrayType)theEObject;
-				T result = caseArrayType(arrayType);
-				if (result == null) result = caseType(arrayType);
-				if (result == null) result = caseNamedElement(arrayType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case JdslPackage.ROLE: {
 				Role role = (Role)theEObject;
 				T result = caseRole(role);
@@ -205,51 +182,6 @@ public class JdslSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseProperty(Property object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseType(Type object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Single Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Single Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSingleType(SingleType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Array Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Array Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseArrayType(ArrayType object) {
 		return null;
 	}
 

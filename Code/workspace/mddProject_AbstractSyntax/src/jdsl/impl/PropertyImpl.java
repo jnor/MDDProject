@@ -5,13 +5,11 @@ package jdsl.impl;
 import jdsl.AccessLevelEnum;
 import jdsl.JdslPackage;
 import jdsl.Property;
-import jdsl.Type;
+import jdsl.TypeEnum;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -22,24 +20,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link jdsl.impl.PropertyImpl#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link jdsl.impl.PropertyImpl#getAccessModifer <em>Access Modifer</em>}</li>
+ *   <li>{@link jdsl.impl.PropertyImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class PropertyImpl extends NamedElementImpl implements Property {
-	/**
-	 * The cached value of the '{@link #getDatatype() <em>Datatype</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDatatype()
-	 * @generated
-	 * @ordered
-	 */
-	protected Type datatype;
-
 	/**
 	 * The default value of the '{@link #getAccessModifer() <em>Access Modifer</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -61,6 +49,26 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	protected AccessLevelEnum accessModifer = ACCESS_MODIFER_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final TypeEnum TYPE_EDEFAULT = TypeEnum.CHAR;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeEnum type = TYPE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -77,49 +85,6 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	@Override
 	protected EClass eStaticClass() {
 		return JdslPackage.Literals.PROPERTY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Type getDatatype() {
-		return datatype;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetDatatype(Type newDatatype, NotificationChain msgs) {
-		Type oldDatatype = datatype;
-		datatype = newDatatype;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JdslPackage.PROPERTY__DATATYPE, oldDatatype, newDatatype);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDatatype(Type newDatatype) {
-		if (newDatatype != datatype) {
-			NotificationChain msgs = null;
-			if (datatype != null)
-				msgs = ((InternalEObject)datatype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JdslPackage.PROPERTY__DATATYPE, null, msgs);
-			if (newDatatype != null)
-				msgs = ((InternalEObject)newDatatype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JdslPackage.PROPERTY__DATATYPE, null, msgs);
-			msgs = basicSetDatatype(newDatatype, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, JdslPackage.PROPERTY__DATATYPE, newDatatype, newDatatype));
 	}
 
 	/**
@@ -148,13 +113,20 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case JdslPackage.PROPERTY__DATATYPE:
-				return basicSetDatatype(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public TypeEnum getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(TypeEnum newType) {
+		TypeEnum oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, JdslPackage.PROPERTY__TYPE, oldType, type));
 	}
 
 	/**
@@ -165,10 +137,10 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case JdslPackage.PROPERTY__DATATYPE:
-				return getDatatype();
 			case JdslPackage.PROPERTY__ACCESS_MODIFER:
 				return getAccessModifer();
+			case JdslPackage.PROPERTY__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -181,11 +153,11 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case JdslPackage.PROPERTY__DATATYPE:
-				setDatatype((Type)newValue);
-				return;
 			case JdslPackage.PROPERTY__ACCESS_MODIFER:
 				setAccessModifer((AccessLevelEnum)newValue);
+				return;
+			case JdslPackage.PROPERTY__TYPE:
+				setType((TypeEnum)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -199,11 +171,11 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case JdslPackage.PROPERTY__DATATYPE:
-				setDatatype((Type)null);
-				return;
 			case JdslPackage.PROPERTY__ACCESS_MODIFER:
 				setAccessModifer(ACCESS_MODIFER_EDEFAULT);
+				return;
+			case JdslPackage.PROPERTY__TYPE:
+				setType(TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -217,10 +189,10 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case JdslPackage.PROPERTY__DATATYPE:
-				return datatype != null;
 			case JdslPackage.PROPERTY__ACCESS_MODIFER:
 				return accessModifer != ACCESS_MODIFER_EDEFAULT;
+			case JdslPackage.PROPERTY__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -237,6 +209,8 @@ public class PropertyImpl extends NamedElementImpl implements Property {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (accessModifer: ");
 		result.append(accessModifer);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

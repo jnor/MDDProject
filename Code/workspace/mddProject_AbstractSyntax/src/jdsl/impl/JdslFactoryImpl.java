@@ -60,8 +60,6 @@ public class JdslFactoryImpl extends EFactoryImpl implements JdslFactory {
 			case JdslPackage.CONTENT_MODEL: return createContentModel();
 			case JdslPackage.CONTENT_TYPE: return createContentType();
 			case JdslPackage.PROPERTY: return createProperty();
-			case JdslPackage.SINGLE_TYPE: return createSingleType();
-			case JdslPackage.ARRAY_TYPE: return createArrayType();
 			case JdslPackage.ROLE: return createRole();
 			case JdslPackage.USER: return createUser();
 			case JdslPackage.VERSION: return createVersion();
@@ -137,26 +135,6 @@ public class JdslFactoryImpl extends EFactoryImpl implements JdslFactory {
 	public Property createProperty() {
 		PropertyImpl property = new PropertyImpl();
 		return property;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SingleType createSingleType() {
-		SingleTypeImpl singleType = new SingleTypeImpl();
-		return singleType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayType createArrayType() {
-		ArrayTypeImpl arrayType = new ArrayTypeImpl();
-		return arrayType;
 	}
 
 	/**

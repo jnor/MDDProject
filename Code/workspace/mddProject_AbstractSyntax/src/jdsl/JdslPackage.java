@@ -214,22 +214,22 @@ public interface JdslPackage extends EPackage {
 	int PROPERTY__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Datatype</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY__DATATYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Access Modifer</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPERTY__ACCESS_MODIFER = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PROPERTY__ACCESS_MODIFER = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Property</em>' class.
@@ -241,108 +241,6 @@ public interface JdslPackage extends EPackage {
 	int PROPERTY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link jdsl.impl.TypeImpl <em>Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see jdsl.impl.TypeImpl
-	 * @see jdsl.impl.JdslPackageImpl#getType()
-	 * @generated
-	 */
-	int TYPE = 4;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link jdsl.impl.SingleTypeImpl <em>Single Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see jdsl.impl.SingleTypeImpl
-	 * @see jdsl.impl.JdslPackageImpl#getSingleType()
-	 * @generated
-	 */
-	int SINGLE_TYPE = 5;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SINGLE_TYPE__NAME = TYPE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SINGLE_TYPE__TYPE = TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Single Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SINGLE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link jdsl.impl.ArrayTypeImpl <em>Array Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see jdsl.impl.ArrayTypeImpl
-	 * @see jdsl.impl.JdslPackageImpl#getArrayType()
-	 * @generated
-	 */
-	int ARRAY_TYPE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARRAY_TYPE__NAME = TYPE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARRAY_TYPE__TYPE = TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Array Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARRAY_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link jdsl.impl.RoleImpl <em>Role</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -350,7 +248,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getRole()
 	 * @generated
 	 */
-	int ROLE = 7;
+	int ROLE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -396,7 +294,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getUser()
 	 * @generated
 	 */
-	int USER = 8;
+	int USER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -487,7 +385,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 9;
+	int VERSION = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -515,7 +413,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getCMS()
 	 * @generated
 	 */
-	int CMS = 10;
+	int CMS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -579,7 +477,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getCMSEnum()
 	 * @generated
 	 */
-	int CMS_ENUM = 11;
+	int CMS_ENUM = 8;
 
 	/**
 	 * The meta object id for the '{@link jdsl.TypeEnum <em>Type Enum</em>}' enum.
@@ -589,7 +487,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getTypeEnum()
 	 * @generated
 	 */
-	int TYPE_ENUM = 12;
+	int TYPE_ENUM = 9;
 
 	/**
 	 * The meta object id for the '{@link jdsl.AccessLevelEnum <em>Access Level Enum</em>}' enum.
@@ -599,7 +497,7 @@ public interface JdslPackage extends EPackage {
 	 * @see jdsl.impl.JdslPackageImpl#getAccessLevelEnum()
 	 * @generated
 	 */
-	int ACCESS_LEVEL_ENUM = 13;
+	int ACCESS_LEVEL_ENUM = 10;
 
 
 	/**
@@ -720,17 +618,6 @@ public interface JdslPackage extends EPackage {
 	EClass getProperty();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link jdsl.Property#getDatatype <em>Datatype</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Datatype</em>'.
-	 * @see jdsl.Property#getDatatype()
-	 * @see #getProperty()
-	 * @generated
-	 */
-	EReference getProperty_Datatype();
-
-	/**
 	 * Returns the meta object for the attribute '{@link jdsl.Property#getAccessModifer <em>Access Modifer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -742,56 +629,15 @@ public interface JdslPackage extends EPackage {
 	EAttribute getProperty_AccessModifer();
 
 	/**
-	 * Returns the meta object for class '{@link jdsl.Type <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Type</em>'.
-	 * @see jdsl.Type
-	 * @generated
-	 */
-	EClass getType();
-
-	/**
-	 * Returns the meta object for class '{@link jdsl.SingleType <em>Single Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Single Type</em>'.
-	 * @see jdsl.SingleType
-	 * @generated
-	 */
-	EClass getSingleType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link jdsl.SingleType#getType <em>Type</em>}'.
+	 * Returns the meta object for the attribute '{@link jdsl.Property#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see jdsl.SingleType#getType()
-	 * @see #getSingleType()
+	 * @see jdsl.Property#getType()
+	 * @see #getProperty()
 	 * @generated
 	 */
-	EAttribute getSingleType_Type();
-
-	/**
-	 * Returns the meta object for class '{@link jdsl.ArrayType <em>Array Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Array Type</em>'.
-	 * @see jdsl.ArrayType
-	 * @generated
-	 */
-	EClass getArrayType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link jdsl.ArrayType#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see jdsl.ArrayType#getType()
-	 * @see #getArrayType()
-	 * @generated
-	 */
-	EAttribute getArrayType_Type();
+	EAttribute getProperty_Type();
 
 	/**
 	 * Returns the meta object for class '{@link jdsl.Role <em>Role</em>}'.
@@ -1125,14 +971,6 @@ public interface JdslPackage extends EPackage {
 		EClass PROPERTY = eINSTANCE.getProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Datatype</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROPERTY__DATATYPE = eINSTANCE.getProperty_Datatype();
-
-		/**
 		 * The meta object literal for the '<em><b>Access Modifer</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1141,50 +979,12 @@ public interface JdslPackage extends EPackage {
 		EAttribute PROPERTY__ACCESS_MODIFER = eINSTANCE.getProperty_AccessModifer();
 
 		/**
-		 * The meta object literal for the '{@link jdsl.impl.TypeImpl <em>Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see jdsl.impl.TypeImpl
-		 * @see jdsl.impl.JdslPackageImpl#getType()
-		 * @generated
-		 */
-		EClass TYPE = eINSTANCE.getType();
-
-		/**
-		 * The meta object literal for the '{@link jdsl.impl.SingleTypeImpl <em>Single Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see jdsl.impl.SingleTypeImpl
-		 * @see jdsl.impl.JdslPackageImpl#getSingleType()
-		 * @generated
-		 */
-		EClass SINGLE_TYPE = eINSTANCE.getSingleType();
-
-		/**
 		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SINGLE_TYPE__TYPE = eINSTANCE.getSingleType_Type();
-
-		/**
-		 * The meta object literal for the '{@link jdsl.impl.ArrayTypeImpl <em>Array Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see jdsl.impl.ArrayTypeImpl
-		 * @see jdsl.impl.JdslPackageImpl#getArrayType()
-		 * @generated
-		 */
-		EClass ARRAY_TYPE = eINSTANCE.getArrayType();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ARRAY_TYPE__TYPE = eINSTANCE.getArrayType_Type();
+		EAttribute PROPERTY__TYPE = eINSTANCE.getProperty_Type();
 
 		/**
 		 * The meta object literal for the '{@link jdsl.impl.RoleImpl <em>Role</em>}' class.

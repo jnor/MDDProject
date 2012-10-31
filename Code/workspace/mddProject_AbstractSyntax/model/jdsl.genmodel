@@ -39,15 +39,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//ContentType/visible"/>
     </genClasses>
     <genClasses ecoreClass="jdsl.ecore#//Property">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference jdsl.ecore#//Property/Datatype"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//Property/accessModifer"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="jdsl.ecore#//Type"/>
-    <genClasses ecoreClass="jdsl.ecore#//SingleType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//SingleType/type"/>
-    </genClasses>
-    <genClasses ecoreClass="jdsl.ecore#//ArrayType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//ArrayType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//Property/type"/>
     </genClasses>
     <genClasses ecoreClass="jdsl.ecore#//Role">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute jdsl.ecore#//Role/types"/>

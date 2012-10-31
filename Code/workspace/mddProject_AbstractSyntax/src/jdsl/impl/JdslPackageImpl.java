@@ -3,7 +3,6 @@
 package jdsl.impl;
 
 import jdsl.AccessLevelEnum;
-import jdsl.ArrayType;
 import jdsl.CMSEnum;
 import jdsl.ContentModel;
 import jdsl.ContentType;
@@ -12,8 +11,6 @@ import jdsl.JdslPackage;
 import jdsl.NamedElement;
 import jdsl.Property;
 import jdsl.Role;
-import jdsl.SingleType;
-import jdsl.Type;
 import jdsl.TypeEnum;
 import jdsl.User;
 import jdsl.Version;
@@ -60,27 +57,6 @@ public class JdslPackageImpl extends EPackageImpl implements JdslPackage {
 	 * @generated
 	 */
 	private EClass propertyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass typeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass singleTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass arrayTypeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -296,62 +272,17 @@ public class JdslPackageImpl extends EPackageImpl implements JdslPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getProperty_Datatype() {
-		return (EReference)propertyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getProperty_AccessModifer() {
+		return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getProperty_Type() {
 		return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getType() {
-		return typeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSingleType() {
-		return singleTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getSingleType_Type() {
-		return (EAttribute)singleTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getArrayType() {
-		return arrayTypeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getArrayType_Type() {
-		return (EAttribute)arrayTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -576,16 +507,8 @@ public class JdslPackageImpl extends EPackageImpl implements JdslPackage {
 		createEAttribute(contentTypeEClass, CONTENT_TYPE__VISIBLE);
 
 		propertyEClass = createEClass(PROPERTY);
-		createEReference(propertyEClass, PROPERTY__DATATYPE);
 		createEAttribute(propertyEClass, PROPERTY__ACCESS_MODIFER);
-
-		typeEClass = createEClass(TYPE);
-
-		singleTypeEClass = createEClass(SINGLE_TYPE);
-		createEAttribute(singleTypeEClass, SINGLE_TYPE__TYPE);
-
-		arrayTypeEClass = createEClass(ARRAY_TYPE);
-		createEAttribute(arrayTypeEClass, ARRAY_TYPE__TYPE);
+		createEAttribute(propertyEClass, PROPERTY__TYPE);
 
 		roleEClass = createEClass(ROLE);
 		createEAttribute(roleEClass, ROLE__TYPES);
@@ -645,9 +568,6 @@ public class JdslPackageImpl extends EPackageImpl implements JdslPackage {
 		contentModelEClass.getESuperTypes().add(this.getNamedElement());
 		contentTypeEClass.getESuperTypes().add(this.getNamedElement());
 		propertyEClass.getESuperTypes().add(this.getNamedElement());
-		typeEClass.getESuperTypes().add(this.getNamedElement());
-		singleTypeEClass.getESuperTypes().add(this.getType());
-		arrayTypeEClass.getESuperTypes().add(this.getType());
 		roleEClass.getESuperTypes().add(this.getNamedElement());
 		userEClass.getESuperTypes().add(this.getNamedElement());
 		versionEClass.getESuperTypes().add(this.getNamedElement());
@@ -668,16 +588,8 @@ public class JdslPackageImpl extends EPackageImpl implements JdslPackage {
 		initEAttribute(getContentType_Visible(), ecorePackage.getEBoolean(), "visible", null, 0, 1, ContentType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProperty_Datatype(), this.getType(), null, "Datatype", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProperty_AccessModifer(), this.getAccessLevelEnum(), "accessModifer", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(typeEClass, Type.class, "Type", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(singleTypeEClass, SingleType.class, "SingleType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSingleType_Type(), this.getTypeEnum(), "type", null, 0, 1, SingleType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(arrayTypeEClass, ArrayType.class, "ArrayType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getArrayType_Type(), this.getTypeEnum(), "type", null, 0, 1, ArrayType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getProperty_Type(), this.getTypeEnum(), "type", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRole_Types(), ecorePackage.getEString(), "types", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

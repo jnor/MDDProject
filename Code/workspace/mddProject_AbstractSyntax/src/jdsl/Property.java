@@ -11,8 +11,8 @@ package jdsl;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link jdsl.Property#getDatatype <em>Datatype</em>}</li>
  *   <li>{@link jdsl.Property#getAccessModifer <em>Access Modifer</em>}</li>
+ *   <li>{@link jdsl.Property#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,32 +21,6 @@ package jdsl;
  * @generated
  */
 public interface Property extends NamedElement {
-	/**
-	 * Returns the value of the '<em><b>Datatype</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Datatype</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Datatype</em>' containment reference.
-	 * @see #setDatatype(Type)
-	 * @see jdsl.JdslPackage#getProperty_Datatype()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Type getDatatype();
-
-	/**
-	 * Sets the value of the '{@link jdsl.Property#getDatatype <em>Datatype</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Datatype</em>' containment reference.
-	 * @see #getDatatype()
-	 * @generated
-	 */
-	void setDatatype(Type value);
-
 	/**
 	 * Returns the value of the '<em><b>Access Modifer</b></em>' attribute.
 	 * The literals are from the enumeration {@link jdsl.AccessLevelEnum}.
@@ -75,5 +49,34 @@ public interface Property extends NamedElement {
 	 * @generated
 	 */
 	void setAccessModifer(AccessLevelEnum value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link jdsl.TypeEnum}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see jdsl.TypeEnum
+	 * @see #setType(TypeEnum)
+	 * @see jdsl.JdslPackage#getProperty_Type()
+	 * @model required="true"
+	 * @generated
+	 */
+	TypeEnum getType();
+
+	/**
+	 * Sets the value of the '{@link jdsl.Property#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see jdsl.TypeEnum
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(TypeEnum value);
 
 } // Property
