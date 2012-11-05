@@ -454,7 +454,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	'''
 	def determineN2PropertyType(Property p)
 	'''
-	«
+	«	
 	switch p.type.literal
 	{
 	case p.type.literal.equals("string") : toN2PropertyCaseString(p)
@@ -476,12 +476,99 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	
 	def toConcrete5(ContentType ct,IFileSystemAccess fsa)
 	{
-		//Call to Create Controller.php
-		//Call to Create Edit.php
-		//Call to Create add.php
-		//Call to whatever we are missing.
+		fsa.generateFile("view.php", toViewConcrete5())
+	    fsa.generateFile("add.php", toAddConcrete5(ct))
+		fsa.generateFile("controller.php", toControllerConcrete5(ct))
+		fsa.generateFile("edit.php", toEditConcrete5(ct))
+		fsa.generateFile("db.xml", toDBConcrete5(ct))
 	}
 	
+	def toViewConcrete5()
+	'''<?php echo $content?>'''
+	
+	def toControllerConcrete5(ContentType ct)
+	'''
+	<?php
+	class «ct.name.toUpperCase»BlockController extends BlockController {
+		
+		var $pobj;
+		
+		protected $btDescription = "Block for " «ct.name.toFirstUpper»;
+		protected $btName = "«ct.name.toFirstUpper»";
+		protected $btTable = 'bt«ct.name.toFirstUpper»';
+		protected $btInterfaceWidth = "350";
+		protected $btInterfaceHeight = "300";
+		
+		
+	}
+	
+?>
+	'''
+	
+	def toDBConcrete5(ContentType ct)
+	'''
+	<?xml version="1.0"?>
+<schema version="0.3">
+	<table name="bt«ct.name.toUpperCase»">
+		<field name="bID" type="I">
+			<key />
+			<unsigned />
+			</field>
+				«FOR p : ct.hasProperties»
+				«
+				p.toConcrete5DBProperty
+				»
+			«ENDFOR»
+	</table>
+</schema>
+	'''
+	
+	
+	def toAddConcrete5(ContentType ct)
+	'''
+<p>This is the Add template for «ct.name.toFirstUpper»</p>
+		«FOR p : ct.hasProperties»
+				«
+				p.toConcrete5DBProperty
+				»
+			«ENDFOR»
+	'''
+	
+	def toEditConcrete5(ContentType ct)
+	'''
+	<p>This is the edit template for «ct.name.toFirstUpper»</p>
+
+		«FOR p : ct.hasProperties»
+				«
+				p.toConcrete5DBProperty
+				»
+			«ENDFOR»
+	'''
+	def toConcrete5DBProperty(Property p)
+	 //The type is hard to guess! 
+	 //Need somekind of switch for data types.
+	 // X2 means Longtext type.
+	 // The schema is in AXMLS 
+	'''
+		<field name="«p.name.toFirstLower»" type="X2">
+		</field>
+	'''
+	
+	def toConcrete5AddForm(Property p)
+	'''
+	<?php echo $form->label('«p.name.toFirstLower»', '«p.name.toFirstUpper»');?>
+<?php echo $form->text('«p.name.toFirstLower»', array('style' => 'width: 320px'));?>
+	'''
+	
+		def toConcrete5EditForm(Property p)
+		//Not sure about the $content parameter. Need to do more testing.
+	'''
+	<?php echo $form->label('«p.name.toFirstLower»', '«p.name.toFirstUpper»');?>
+	<?php echo $form->text('«p.name.toFirstLower»', $content, array('style' => 'width: 320px'));?>
+	'''
+
+
+
 	def toPlone(ContentType ct,IFileSystemAccess fsa)
 	{
 			fsa.generateFile("ErrorLogJDSL.txt", "An error has been encountered. Error code 1: The CMS is currently not supported in Code generator. ")
