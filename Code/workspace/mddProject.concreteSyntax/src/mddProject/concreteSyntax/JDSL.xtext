@@ -9,7 +9,7 @@ ContentModel returns ContentModel:
 	'ContentModel'
 	'{'
 	    'Name' '=' name=EString
-		('Contains' '{' hasElements+=NamedElement ( "," hasElements+=NamedElement)* '}' )?
+		('Contains' '{' hasElements+=NamedElement ( ";" hasElements+=NamedElement)* ';' '}' )?
 	'}';
 
 NamedElement returns NamedElement:
@@ -26,9 +26,9 @@ ContentType returns ContentType:
 	'ContentType'
 	'{'
 	    'Name' '=' name=EString
-		'Properties' '{' hasProperties+=Property ( "," hasProperties+=Property)* '}' 
+		'Properties' '{' hasProperties+=Property ( ";" hasProperties+=Property)* ';' '}' 
 		('Guid' '=' guid=EInt)?
-		('Versions' '{' hasVersions+=Version ( "," hasVersions+=Version)* '}' )?
+		('Versions' '{' hasVersions+=Version ( ";" hasVersions+=Version)* ';' '}' )?
 		('ModifiedBy' '=' modifiedBy=User)?
 	'}';
 
@@ -46,7 +46,7 @@ Role returns Role:
 	'Role'
 	'{'
 	     'Name' '=' name=EString
-		('Types' '{' types+=EString ( "," types+=EString)* '}' )?
+		('Types' '{' types+=EString ( ";" types+=EString)* ';' '}' )?
 	'}';
 
 User returns User:
@@ -55,8 +55,8 @@ User returns User:
 	'User'
 	'{'
 	  'Name' '=' name=EString
-		('Firstname' '=' firstname=EString)?
-		('Lastname' '=' lastname=EString)?
+		('userFirstName' '=' firstname=EString)?
+		('userLastName' '=' lastname=EString)?
 		('Login' '=' login=EString)?
 		('Password' '='  password=EString)?
 		('Email' '=' email=EString)?
@@ -98,3 +98,4 @@ enum CMSEnum:
 enum AccessLevelEnum:
 	public='public' | private='private'	
 	;
+

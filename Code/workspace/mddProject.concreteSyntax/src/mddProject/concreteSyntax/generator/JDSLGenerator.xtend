@@ -278,7 +278,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	def getDateView(ContentType ct, Property p)
 	'''
 	<tr>
-	<td><b>«p.name.toUpperCase»:</b></td>
+	<td><b>«p.name.toFirstUpper»:</b></td>
 	<td><%=String.format("%1$tF %1$tR",
                   «ct.name.toLowerCase».get«p.name.toString.toFirstUpper»())%></td>
 	</tr>
@@ -545,7 +545,6 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 			«ENDFOR»
 	'''
 	def toConcrete5DBProperty(Property p)
-	 //The type is hard to guess! 
 	 //Need somekind of switch for data types.
 	 // X2 means Longtext type.
 	 // The schema is in AXMLS 
