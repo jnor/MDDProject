@@ -777,8 +777,8 @@ public class JDSLGenerator implements IGenerator {
     _builder.newLine();
     _builder.append("<td><b>");
     String _name = p.getName();
-    String _upperCase = _name.toUpperCase();
-    _builder.append(_upperCase, "");
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
     _builder.append(":</b></td>");
     _builder.newLineIfNotEmpty();
     _builder.append("<td><%=String.format(\"%1$tF %1$tR\",");
@@ -790,8 +790,8 @@ public class JDSLGenerator implements IGenerator {
     _builder.append(".get");
     String _name_2 = p.getName();
     String _string = _name_2.toString();
-    String _firstUpper = StringExtensions.toFirstUpper(_string);
-    _builder.append(_firstUpper, "                  ");
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_string);
+    _builder.append(_firstUpper_1, "                  ");
     _builder.append("())%></td>");
     _builder.newLineIfNotEmpty();
     _builder.append("</tr>");
@@ -1053,8 +1053,8 @@ public class JDSLGenerator implements IGenerator {
     _builder.append("[N2.Details.EditableTextBox(\"");
     String _name = p.getName();
     String _string = _name.toString();
-    String _upperCase = _string.toUpperCase();
-    _builder.append(_upperCase, "");
+    String _firstUpper = StringExtensions.toFirstUpper(_string);
+    _builder.append(_firstUpper, "");
     _builder.append("\",20)]");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -1097,8 +1097,8 @@ public class JDSLGenerator implements IGenerator {
     _builder.append("[N2.Details.Editable(\"");
     String _name = p.getName();
     String _string = _name.toString();
-    String _upperCase = _string.toUpperCase();
-    _builder.append(_upperCase, "");
+    String _firstUpper = StringExtensions.toFirstUpper(_string);
+    _builder.append(_firstUpper, "");
     _builder.append("\", typeof(SelectedDate), \"SelectedDate\", 20)]");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -1138,8 +1138,8 @@ public class JDSLGenerator implements IGenerator {
     _builder.append("[N2.Details.EditableTextBox(\"");
     String _name = p.getName();
     String _string = _name.toString();
-    String _upperCase = _string.toUpperCase();
-    _builder.append(_upperCase, "");
+    String _firstUpper = StringExtensions.toFirstUpper(_string);
+    _builder.append(_firstUpper, "");
     _builder.append("\",20)]");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -1202,7 +1202,7 @@ public class JDSLGenerator implements IGenerator {
     _builder.append("{");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("protected void Page_Load(object sender, EventArgs e)\t");
+    _builder.append("protected void Page_Load(object sender, EventArgs e);\t");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -1268,8 +1268,8 @@ public class JDSLGenerator implements IGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("<n2: Display PropertyName=\"");
     String _name = p.getName();
-    String _upperCase = _name.toUpperCase();
-    _builder.append(_upperCase, "");
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
     _builder.append("\" runat=\"server\" />");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -1334,8 +1334,218 @@ public class JDSLGenerator implements IGenerator {
     return _builder;
   }
   
-  public Object toConcrete5(final ContentType ct, final IFileSystemAccess fsa) {
-    return null;
+  public void toConcrete5(final ContentType ct, final IFileSystemAccess fsa) {
+    CharSequence _viewConcrete5 = this.toViewConcrete5();
+    fsa.generateFile("view.php", _viewConcrete5);
+    CharSequence _addConcrete5 = this.toAddConcrete5(ct);
+    fsa.generateFile("add.php", _addConcrete5);
+    CharSequence _controllerConcrete5 = this.toControllerConcrete5(ct);
+    fsa.generateFile("controller.php", _controllerConcrete5);
+    CharSequence _editConcrete5 = this.toEditConcrete5(ct);
+    fsa.generateFile("edit.php", _editConcrete5);
+    CharSequence _dBConcrete5 = this.toDBConcrete5(ct);
+    fsa.generateFile("db.xml", _dBConcrete5);
+  }
+  
+  public CharSequence toViewConcrete5() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?php echo $content?>");
+    return _builder;
+  }
+  
+  public CharSequence toControllerConcrete5(final ContentType ct) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?php");
+    _builder.newLine();
+    _builder.append("class ");
+    String _name = ct.getName();
+    String _upperCase = _name.toUpperCase();
+    _builder.append(_upperCase, "");
+    _builder.append("BlockController extends BlockController {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("var $pobj;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("protected $btDescription = \"Block for \" ");
+    String _name_1 = ct.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name_1);
+    _builder.append(_firstUpper, "	");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("protected $btName = \"");
+    String _name_2 = ct.getName();
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_2);
+    _builder.append(_firstUpper_1, "	");
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("protected $btTable = \'bt");
+    String _name_3 = ct.getName();
+    String _firstUpper_2 = StringExtensions.toFirstUpper(_name_3);
+    _builder.append(_firstUpper_2, "	");
+    _builder.append("\';");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("protected $btInterfaceWidth = \"350\";");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("protected $btInterfaceHeight = \"300\";");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("?>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence toDBConcrete5(final ContentType ct) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append("<?xml version=\"1.0\"?>");
+    _builder.newLine();
+    _builder.append("<schema version=\"0.3\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<table name=\"bt");
+    String _name = ct.getName();
+    String _upperCase = _name.toUpperCase();
+    _builder.append(_upperCase, "	");
+    _builder.append("\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("<field name=\"bID\" type=\"I\">");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("<key />");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("<unsigned />");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("</field>");
+    _builder.newLine();
+    {
+      EList<Property> _hasProperties = ct.getHasProperties();
+      for(final Property p : _hasProperties) {
+        _builder.append("\t\t\t\t");
+        CharSequence _concrete5DBProperty = this.toConcrete5DBProperty(p);
+        _builder.append(_concrete5DBProperty, "				");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("</table>");
+    _builder.newLine();
+    _builder.append("</schema>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence toAddConcrete5(final ContentType ct) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<p>This is the Add template for ");
+    String _name = ct.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("</p>");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Property> _hasProperties = ct.getHasProperties();
+      for(final Property p : _hasProperties) {
+        _builder.append("\t\t");
+        CharSequence _concrete5AddForm = this.toConcrete5AddForm(p);
+        _builder.append(_concrete5AddForm, "		");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence toEditConcrete5(final ContentType ct) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<p>This is the edit template for ");
+    String _name = ct.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("</p>");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    {
+      EList<Property> _hasProperties = ct.getHasProperties();
+      for(final Property p : _hasProperties) {
+        _builder.append("\t");
+        CharSequence _concrete5EditForm = this.toConcrete5EditForm(p);
+        _builder.append(_concrete5EditForm, "	");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence toConcrete5DBProperty(final Property p) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<field name=\"");
+    String _name = p.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("\" type=\"X2\">");
+    _builder.newLineIfNotEmpty();
+    _builder.append("</field>");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence toConcrete5AddForm(final Property p) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?php echo $form->label(\'");
+    String _name = p.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("\', \'");
+    String _name_1 = p.getName();
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_1);
+    _builder.append(_firstUpper_1, "");
+    _builder.append("\');?>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("<?php echo $form->text(\'");
+    String _name_2 = p.getName();
+    String _firstUpper_2 = StringExtensions.toFirstUpper(_name_2);
+    _builder.append(_firstUpper_2, "");
+    _builder.append("\', array(\'style\' => \'width: 320px\'));?>");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence toConcrete5EditForm(final Property p) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("<?php echo $form->label(\'");
+    String _name = p.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper, "");
+    _builder.append("\', \'");
+    String _name_1 = p.getName();
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_1);
+    _builder.append(_firstUpper_1, "");
+    _builder.append("\');?>");
+    _builder.newLineIfNotEmpty();
+    _builder.append("<?php echo $form->text(\'");
+    String _name_2 = p.getName();
+    String _firstUpper_2 = StringExtensions.toFirstUpper(_name_2);
+    _builder.append(_firstUpper_2, "");
+    _builder.append("\', $content, array(\'style\' => \'width: 320px\'));?>");
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
   
   public void toPlone(final ContentType ct, final IFileSystemAccess fsa) {

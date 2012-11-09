@@ -376,7 +376,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	
 	def toN2PropertyString(Property p)
 	'''
-		[N2.Details.EditableTextBox("«p.name.toString.toUpperCase»",20)]
+		[N2.Details.EditableTextBox("«p.name.toString.toFirstUpper»",20)]
 			[N2.Web.UI.EditorModifier("TextMode", TextBoxMode.MultiLine)]
 			public String «p.name.toString.toLowerCase»
 			{
@@ -386,7 +386,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	'''
 	def toN2PropertyDateTime(Property p)
 	'''
-		[N2.Details.Editable("«p.name.toString.toUpperCase»", typeof(SelectedDate), "SelectedDate", 20)]
+		[N2.Details.Editable("«p.name.toString.toFirstUpper»", typeof(SelectedDate), "SelectedDate", 20)]
 			public DateTime «p.name.toString.toLowerCase»
 			{
 				get {return this.«p.name.toString.toLowerCase»;}
@@ -396,7 +396,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	
 	def toN2PropertyNormal(Property p)
 	'''
-		[N2.Details.EditableTextBox("«p.name.toString.toUpperCase»",20)]
+		[N2.Details.EditableTextBox("«p.name.toString.toFirstUpper»",20)]
 			public String «p.name.toString.toLowerCase»
 			{
 				get {return this.«p.name.toString.toLowerCase»;}
@@ -416,7 +416,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	{
 		public partial class _Default : N2.Web.UI.Page<Items.«ct.name.toFirstUpper»>
 		{
-			protected void Page_Load(object sender, EventArgs e)	
+			protected void Page_Load(object sender, EventArgs e);	
 		}
 	}
 	'''
@@ -450,7 +450,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	
 	def toN2PropertyAspx(Property p)
 	'''
-	 <n2: Display PropertyName="«p.name.toUpperCase»" runat="server" />
+	 <n2: Display PropertyName="«p.name.toFirstUpper»" runat="server" />
 	'''
 	def determineN2PropertyType(Property p)
 	'''
@@ -529,7 +529,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 <p>This is the Add template for «ct.name.toFirstUpper»</p>
 		«FOR p : ct.hasProperties»
 				«
-				p.toConcrete5DBProperty
+				p.toConcrete5AddForm
 				»
 			«ENDFOR»
 	'''
@@ -540,7 +540,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 
 		«FOR p : ct.hasProperties»
 				«
-				p.toConcrete5DBProperty
+				p.toConcrete5EditForm
 				»
 			«ENDFOR»
 	'''
@@ -549,21 +549,21 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	 // X2 means Longtext type.
 	 // The schema is in AXMLS 
 	'''
-		<field name="«p.name.toFirstLower»" type="X2">
+		<field name="«p.name.toFirstUpper»" type="X2">
 		</field>
 	'''
 	
 	def toConcrete5AddForm(Property p)
 	'''
-	<?php echo $form->label('«p.name.toFirstLower»', '«p.name.toFirstUpper»');?>
-<?php echo $form->text('«p.name.toFirstLower»', array('style' => 'width: 320px'));?>
+	<?php echo $form->label('«p.name.toFirstUpper»', '«p.name.toFirstUpper»');?>
+<?php echo $form->text('«p.name.toFirstUpper»', array('style' => 'width: 320px'));?>
 	'''
 	
 		def toConcrete5EditForm(Property p)
 		//Not sure about the $content parameter. Need to do more testing.
 	'''
-	<?php echo $form->label('«p.name.toFirstLower»', '«p.name.toFirstUpper»');?>
-	<?php echo $form->text('«p.name.toFirstLower»', $content, array('style' => 'width: 320px'));?>
+	<?php echo $form->label('«p.name.toFirstUpper»', '«p.name.toFirstUpper»');?>
+	<?php echo $form->text('«p.name.toFirstUpper»', $content, array('style' => 'width: 320px'));?>
 	'''
 
 

@@ -35,22 +35,23 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cHasElementsAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
 		private final RuleCall cHasElementsNamedElementParserRuleCall_6_2_0 = (RuleCall)cHasElementsAssignment_6_2.eContents().get(0);
 		private final Group cGroup_6_3 = (Group)cGroup_6.eContents().get(3);
-		private final Keyword cCommaKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_6_3_0 = (Keyword)cGroup_6_3.eContents().get(0);
 		private final Assignment cHasElementsAssignment_6_3_1 = (Assignment)cGroup_6_3.eContents().get(1);
 		private final RuleCall cHasElementsNamedElementParserRuleCall_6_3_1_0 = (RuleCall)cHasElementsAssignment_6_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
+		private final Keyword cSemicolonKeyword_6_4 = (Keyword)cGroup_6.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_6_5 = (Keyword)cGroup_6.eContents().get(5);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//ContentModel:
 		//
-		//	{ContentModel} "ContentModel" "{" "Name" "=" name=EString ("Contains" "{" hasElements+=NamedElement (","
+		//	{ContentModel} "ContentModel" "{" "Name" "=" name=EString ("Contains" "{" hasElements+=NamedElement (";"
 		//
-		//	hasElements+=NamedElement)* "}")? "}";
+		//	hasElements+=NamedElement)* ";" "}")? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{ContentModel} "ContentModel" "{" "Name" "=" name=EString ("Contains" "{" hasElements+=NamedElement (","
+		//{ContentModel} "ContentModel" "{" "Name" "=" name=EString ("Contains" "{" hasElements+=NamedElement (";"
 		//
-		//hasElements+=NamedElement)* "}")? "}"
+		//hasElements+=NamedElement)* ";" "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{ContentModel}
@@ -74,7 +75,7 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_5_0() { return cNameEStringParserRuleCall_5_0; }
 
-		//("Contains" "{" hasElements+=NamedElement ("," hasElements+=NamedElement)* "}")?
+		//("Contains" "{" hasElements+=NamedElement (";" hasElements+=NamedElement)* ";" "}")?
 		public Group getGroup_6() { return cGroup_6; }
 
 		//"Contains"
@@ -89,11 +90,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//NamedElement
 		public RuleCall getHasElementsNamedElementParserRuleCall_6_2_0() { return cHasElementsNamedElementParserRuleCall_6_2_0; }
 
-		//("," hasElements+=NamedElement)*
+		//(";" hasElements+=NamedElement)*
 		public Group getGroup_6_3() { return cGroup_6_3; }
 
-		//","
-		public Keyword getCommaKeyword_6_3_0() { return cCommaKeyword_6_3_0; }
+		//";"
+		public Keyword getSemicolonKeyword_6_3_0() { return cSemicolonKeyword_6_3_0; }
 
 		//hasElements+=NamedElement
 		public Assignment getHasElementsAssignment_6_3_1() { return cHasElementsAssignment_6_3_1; }
@@ -101,8 +102,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//NamedElement
 		public RuleCall getHasElementsNamedElementParserRuleCall_6_3_1_0() { return cHasElementsNamedElementParserRuleCall_6_3_1_0; }
 
+		//";"
+		public Keyword getSemicolonKeyword_6_4() { return cSemicolonKeyword_6_4; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6_4() { return cRightCurlyBracketKeyword_6_4; }
+		public Keyword getRightCurlyBracketKeyword_6_5() { return cRightCurlyBracketKeyword_6_5; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
@@ -135,8 +139,6 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		////ContentModel | ContentType | Property | SingleType | ArrayType | Role | User | Version | CMS | AccessLevel;
-		//
 		//EString returns ecore::EString:
 		//
 		//	STRING | ID;
@@ -163,51 +165,53 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cNameEStringParserRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Keyword cGuidKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
-		private final Assignment cGuidAssignment_6_2 = (Assignment)cGroup_6.eContents().get(2);
-		private final RuleCall cGuidEIntParserRuleCall_6_2_0 = (RuleCall)cGuidAssignment_6_2.eContents().get(0);
-		private final Keyword cHasPropertiesKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Keyword cLeftCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cHasPropertiesAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cHasPropertiesPropertyParserRuleCall_9_0 = (RuleCall)cHasPropertiesAssignment_9.eContents().get(0);
-		private final Group cGroup_10 = (Group)cGroup.eContents().get(10);
-		private final Keyword cCommaKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Assignment cHasPropertiesAssignment_10_1 = (Assignment)cGroup_10.eContents().get(1);
-		private final RuleCall cHasPropertiesPropertyParserRuleCall_10_1_0 = (RuleCall)cHasPropertiesAssignment_10_1.eContents().get(0);
+		private final Keyword cPropertiesKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cLeftCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cHasPropertiesAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cHasPropertiesPropertyParserRuleCall_8_0 = (RuleCall)cHasPropertiesAssignment_8.eContents().get(0);
+		private final Group cGroup_9 = (Group)cGroup.eContents().get(9);
+		private final Keyword cSemicolonKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
+		private final Assignment cHasPropertiesAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
+		private final RuleCall cHasPropertiesPropertyParserRuleCall_9_1_0 = (RuleCall)cHasPropertiesAssignment_9_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		private final Group cGroup_12 = (Group)cGroup.eContents().get(12);
-		private final Keyword cHasVersionsKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
-		private final Assignment cHasVersionsAssignment_12_2 = (Assignment)cGroup_12.eContents().get(2);
-		private final RuleCall cHasVersionsVersionParserRuleCall_12_2_0 = (RuleCall)cHasVersionsAssignment_12_2.eContents().get(0);
-		private final Group cGroup_12_3 = (Group)cGroup_12.eContents().get(3);
-		private final Keyword cCommaKeyword_12_3_0 = (Keyword)cGroup_12_3.eContents().get(0);
-		private final Assignment cHasVersionsAssignment_12_3_1 = (Assignment)cGroup_12_3.eContents().get(1);
-		private final RuleCall cHasVersionsVersionParserRuleCall_12_3_1_0 = (RuleCall)cHasVersionsAssignment_12_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_12_4 = (Keyword)cGroup_12.eContents().get(4);
+		private final Keyword cGuidKeyword_12_0 = (Keyword)cGroup_12.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
+		private final Assignment cGuidAssignment_12_2 = (Assignment)cGroup_12.eContents().get(2);
+		private final RuleCall cGuidEIntParserRuleCall_12_2_0 = (RuleCall)cGuidAssignment_12_2.eContents().get(0);
 		private final Group cGroup_13 = (Group)cGroup.eContents().get(13);
-		private final Keyword cModifiedByKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_13_1 = (Keyword)cGroup_13.eContents().get(1);
-		private final Assignment cModifiedByAssignment_13_2 = (Assignment)cGroup_13.eContents().get(2);
-		private final RuleCall cModifiedByUserParserRuleCall_13_2_0 = (RuleCall)cModifiedByAssignment_13_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_14 = (Keyword)cGroup.eContents().get(14);
+		private final Keyword cVersionsKeyword_13_0 = (Keyword)cGroup_13.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_13_1 = (Keyword)cGroup_13.eContents().get(1);
+		private final Assignment cHasVersionsAssignment_13_2 = (Assignment)cGroup_13.eContents().get(2);
+		private final RuleCall cHasVersionsVersionParserRuleCall_13_2_0 = (RuleCall)cHasVersionsAssignment_13_2.eContents().get(0);
+		private final Group cGroup_13_3 = (Group)cGroup_13.eContents().get(3);
+		private final Keyword cSemicolonKeyword_13_3_0 = (Keyword)cGroup_13_3.eContents().get(0);
+		private final Assignment cHasVersionsAssignment_13_3_1 = (Assignment)cGroup_13_3.eContents().get(1);
+		private final RuleCall cHasVersionsVersionParserRuleCall_13_3_1_0 = (RuleCall)cHasVersionsAssignment_13_3_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_13_4 = (Keyword)cGroup_13.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_13_5 = (Keyword)cGroup_13.eContents().get(5);
+		private final Group cGroup_14 = (Group)cGroup.eContents().get(14);
+		private final Keyword cModifiedByKeyword_14_0 = (Keyword)cGroup_14.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_14_1 = (Keyword)cGroup_14.eContents().get(1);
+		private final Assignment cModifiedByAssignment_14_2 = (Assignment)cGroup_14.eContents().get(2);
+		private final RuleCall cModifiedByUserParserRuleCall_14_2_0 = (RuleCall)cModifiedByAssignment_14_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_15 = (Keyword)cGroup.eContents().get(15);
 		
 		//ContentType:
 		//
-		//	visible?="visible"? "ContentType" "{" "Name" "=" name=EString ("guid" "=" guid=EInt)? "hasProperties" "{"
+		//	visible?="visible"? "ContentType" "{" "Name" "=" name=EString "Properties" "{" hasProperties+=Property (";"
 		//
-		//	hasProperties+=Property ("," hasProperties+=Property)* "}" ("hasVersions" "{" hasVersions+=Version (","
+		//	hasProperties+=Property)* ";" "}" ("Guid" "=" guid=EInt)? ("Versions" "{" hasVersions+=Version (";"
 		//
-		//	hasVersions+=Version)* "}")? ("modifiedBy" "=" modifiedBy=User)? "}";
+		//	hasVersions+=Version)* ";" "}")? ("ModifiedBy" "=" modifiedBy=User)? "}";
 		public ParserRule getRule() { return rule; }
 
-		//visible?="visible"? "ContentType" "{" "Name" "=" name=EString ("guid" "=" guid=EInt)? "hasProperties" "{"
+		//visible?="visible"? "ContentType" "{" "Name" "=" name=EString "Properties" "{" hasProperties+=Property (";"
 		//
-		//hasProperties+=Property ("," hasProperties+=Property)* "}" ("hasVersions" "{" hasVersions+=Version (","
+		//hasProperties+=Property)* ";" "}" ("Guid" "=" guid=EInt)? ("Versions" "{" hasVersions+=Version (";"
 		//
-		//hasVersions+=Version)* "}")? ("modifiedBy" "=" modifiedBy=User)? "}"
+		//hasVersions+=Version)* ";" "}")? ("ModifiedBy" "=" modifiedBy=User)? "}"
 		public Group getGroup() { return cGroup; }
 
 		//visible?="visible"?
@@ -234,95 +238,101 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_5_0() { return cNameEStringParserRuleCall_5_0; }
 
-		//("guid" "=" guid=EInt)?
-		public Group getGroup_6() { return cGroup_6; }
-
-		//"guid"
-		public Keyword getGuidKeyword_6_0() { return cGuidKeyword_6_0; }
-
-		//"="
-		public Keyword getEqualsSignKeyword_6_1() { return cEqualsSignKeyword_6_1; }
-
-		//guid=EInt
-		public Assignment getGuidAssignment_6_2() { return cGuidAssignment_6_2; }
-
-		//EInt
-		public RuleCall getGuidEIntParserRuleCall_6_2_0() { return cGuidEIntParserRuleCall_6_2_0; }
-
-		//"hasProperties"
-		public Keyword getHasPropertiesKeyword_7() { return cHasPropertiesKeyword_7; }
+		//"Properties"
+		public Keyword getPropertiesKeyword_6() { return cPropertiesKeyword_6; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_8() { return cLeftCurlyBracketKeyword_8; }
+		public Keyword getLeftCurlyBracketKeyword_7() { return cLeftCurlyBracketKeyword_7; }
 
 		//hasProperties+=Property
-		public Assignment getHasPropertiesAssignment_9() { return cHasPropertiesAssignment_9; }
+		public Assignment getHasPropertiesAssignment_8() { return cHasPropertiesAssignment_8; }
 
 		//Property
-		public RuleCall getHasPropertiesPropertyParserRuleCall_9_0() { return cHasPropertiesPropertyParserRuleCall_9_0; }
+		public RuleCall getHasPropertiesPropertyParserRuleCall_8_0() { return cHasPropertiesPropertyParserRuleCall_8_0; }
 
-		//("," hasProperties+=Property)*
-		public Group getGroup_10() { return cGroup_10; }
+		//(";" hasProperties+=Property)*
+		public Group getGroup_9() { return cGroup_9; }
 
-		//","
-		public Keyword getCommaKeyword_10_0() { return cCommaKeyword_10_0; }
+		//";"
+		public Keyword getSemicolonKeyword_9_0() { return cSemicolonKeyword_9_0; }
 
 		//hasProperties+=Property
-		public Assignment getHasPropertiesAssignment_10_1() { return cHasPropertiesAssignment_10_1; }
+		public Assignment getHasPropertiesAssignment_9_1() { return cHasPropertiesAssignment_9_1; }
 
 		//Property
-		public RuleCall getHasPropertiesPropertyParserRuleCall_10_1_0() { return cHasPropertiesPropertyParserRuleCall_10_1_0; }
+		public RuleCall getHasPropertiesPropertyParserRuleCall_9_1_0() { return cHasPropertiesPropertyParserRuleCall_9_1_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_10() { return cSemicolonKeyword_10; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 
-		//("hasVersions" "{" hasVersions+=Version ("," hasVersions+=Version)* "}")?
+		//("Guid" "=" guid=EInt)?
 		public Group getGroup_12() { return cGroup_12; }
 
-		//"hasVersions"
-		public Keyword getHasVersionsKeyword_12_0() { return cHasVersionsKeyword_12_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_12_1() { return cLeftCurlyBracketKeyword_12_1; }
-
-		//hasVersions+=Version
-		public Assignment getHasVersionsAssignment_12_2() { return cHasVersionsAssignment_12_2; }
-
-		//Version
-		public RuleCall getHasVersionsVersionParserRuleCall_12_2_0() { return cHasVersionsVersionParserRuleCall_12_2_0; }
-
-		//("," hasVersions+=Version)*
-		public Group getGroup_12_3() { return cGroup_12_3; }
-
-		//","
-		public Keyword getCommaKeyword_12_3_0() { return cCommaKeyword_12_3_0; }
-
-		//hasVersions+=Version
-		public Assignment getHasVersionsAssignment_12_3_1() { return cHasVersionsAssignment_12_3_1; }
-
-		//Version
-		public RuleCall getHasVersionsVersionParserRuleCall_12_3_1_0() { return cHasVersionsVersionParserRuleCall_12_3_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_12_4() { return cRightCurlyBracketKeyword_12_4; }
-
-		//("modifiedBy" "=" modifiedBy=User)?
-		public Group getGroup_13() { return cGroup_13; }
-
-		//"modifiedBy"
-		public Keyword getModifiedByKeyword_13_0() { return cModifiedByKeyword_13_0; }
+		//"Guid"
+		public Keyword getGuidKeyword_12_0() { return cGuidKeyword_12_0; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_13_1() { return cEqualsSignKeyword_13_1; }
+		public Keyword getEqualsSignKeyword_12_1() { return cEqualsSignKeyword_12_1; }
 
-		//modifiedBy=User
-		public Assignment getModifiedByAssignment_13_2() { return cModifiedByAssignment_13_2; }
+		//guid=EInt
+		public Assignment getGuidAssignment_12_2() { return cGuidAssignment_12_2; }
 
-		//User
-		public RuleCall getModifiedByUserParserRuleCall_13_2_0() { return cModifiedByUserParserRuleCall_13_2_0; }
+		//EInt
+		public RuleCall getGuidEIntParserRuleCall_12_2_0() { return cGuidEIntParserRuleCall_12_2_0; }
+
+		//("Versions" "{" hasVersions+=Version (";" hasVersions+=Version)* ";" "}")?
+		public Group getGroup_13() { return cGroup_13; }
+
+		//"Versions"
+		public Keyword getVersionsKeyword_13_0() { return cVersionsKeyword_13_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_13_1() { return cLeftCurlyBracketKeyword_13_1; }
+
+		//hasVersions+=Version
+		public Assignment getHasVersionsAssignment_13_2() { return cHasVersionsAssignment_13_2; }
+
+		//Version
+		public RuleCall getHasVersionsVersionParserRuleCall_13_2_0() { return cHasVersionsVersionParserRuleCall_13_2_0; }
+
+		//(";" hasVersions+=Version)*
+		public Group getGroup_13_3() { return cGroup_13_3; }
+
+		//";"
+		public Keyword getSemicolonKeyword_13_3_0() { return cSemicolonKeyword_13_3_0; }
+
+		//hasVersions+=Version
+		public Assignment getHasVersionsAssignment_13_3_1() { return cHasVersionsAssignment_13_3_1; }
+
+		//Version
+		public RuleCall getHasVersionsVersionParserRuleCall_13_3_1_0() { return cHasVersionsVersionParserRuleCall_13_3_1_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_13_4() { return cSemicolonKeyword_13_4; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_14() { return cRightCurlyBracketKeyword_14; }
+		public Keyword getRightCurlyBracketKeyword_13_5() { return cRightCurlyBracketKeyword_13_5; }
+
+		//("ModifiedBy" "=" modifiedBy=User)?
+		public Group getGroup_14() { return cGroup_14; }
+
+		//"ModifiedBy"
+		public Keyword getModifiedByKeyword_14_0() { return cModifiedByKeyword_14_0; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_14_1() { return cEqualsSignKeyword_14_1; }
+
+		//modifiedBy=User
+		public Assignment getModifiedByAssignment_14_2() { return cModifiedByAssignment_14_2; }
+
+		//User
+		public RuleCall getModifiedByUserParserRuleCall_14_2_0() { return cModifiedByUserParserRuleCall_14_2_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
 	}
 
 	public class PropertyElements extends AbstractParserRuleElementFinder {
@@ -334,25 +344,24 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cNameEStringParserRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
-		private final Keyword cAccessModiferKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cAccessModifierKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Assignment cAccessModiferAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cAccessModiferAccessLevelEnumEnumRuleCall_7_0 = (RuleCall)cAccessModiferAssignment_7.eContents().get(0);
-		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cTypeKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cTypeAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cTypeTypeEnumEnumRuleCall_8_2_0 = (RuleCall)cTypeAssignment_8_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cTypeKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cEqualsSignKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cTypeAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cTypeTypeEnumEnumRuleCall_10_0 = (RuleCall)cTypeAssignment_10.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
 		//Property:
 		//
-		//	"Property" "{" "Name" "=" name=EString "accessModifer" "=" accessModifer=AccessLevelEnum ("Type" "=" type=TypeEnum)?
+		//	"Property" "{" "Name" "=" name=EString "AccessModifier" "=" accessModifer=AccessLevelEnum "Type" "=" type=TypeEnum
 		//
 		//	"}";
 		public ParserRule getRule() { return rule; }
 
-		//"Property" "{" "Name" "=" name=EString "accessModifer" "=" accessModifer=AccessLevelEnum ("Type" "=" type=TypeEnum)? "}"
+		//"Property" "{" "Name" "=" name=EString "AccessModifier" "=" accessModifer=AccessLevelEnum "Type" "=" type=TypeEnum "}"
 		public Group getGroup() { return cGroup; }
 
 		//"Property"
@@ -373,8 +382,8 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_4_0() { return cNameEStringParserRuleCall_4_0; }
 
-		//"accessModifer"
-		public Keyword getAccessModiferKeyword_5() { return cAccessModiferKeyword_5; }
+		//"AccessModifier"
+		public Keyword getAccessModifierKeyword_5() { return cAccessModifierKeyword_5; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
@@ -385,23 +394,20 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//AccessLevelEnum
 		public RuleCall getAccessModiferAccessLevelEnumEnumRuleCall_7_0() { return cAccessModiferAccessLevelEnumEnumRuleCall_7_0; }
 
-		//("Type" "=" type=TypeEnum)?
-		public Group getGroup_8() { return cGroup_8; }
-
 		//"Type"
-		public Keyword getTypeKeyword_8_0() { return cTypeKeyword_8_0; }
+		public Keyword getTypeKeyword_8() { return cTypeKeyword_8; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_8_1() { return cEqualsSignKeyword_8_1; }
+		public Keyword getEqualsSignKeyword_9() { return cEqualsSignKeyword_9; }
 
 		//type=TypeEnum
-		public Assignment getTypeAssignment_8_2() { return cTypeAssignment_8_2; }
+		public Assignment getTypeAssignment_10() { return cTypeAssignment_10; }
 
 		//TypeEnum
-		public RuleCall getTypeTypeEnumEnumRuleCall_8_2_0() { return cTypeTypeEnumEnumRuleCall_8_2_0; }
+		public RuleCall getTypeTypeEnumEnumRuleCall_10_0() { return cTypeTypeEnumEnumRuleCall_10_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_9() { return cRightCurlyBracketKeyword_9; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 	}
 
 	public class RoleElements extends AbstractParserRuleElementFinder {
@@ -422,22 +428,23 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypesAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
 		private final RuleCall cTypesEStringParserRuleCall_7_2_0 = (RuleCall)cTypesAssignment_7_2.eContents().get(0);
 		private final Group cGroup_7_3 = (Group)cGroup_7.eContents().get(3);
-		private final Keyword cCommaKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
+		private final Keyword cSemicolonKeyword_7_3_0 = (Keyword)cGroup_7_3.eContents().get(0);
 		private final Assignment cTypesAssignment_7_3_1 = (Assignment)cGroup_7_3.eContents().get(1);
 		private final RuleCall cTypesEStringParserRuleCall_7_3_1_0 = (RuleCall)cTypesAssignment_7_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_7_4 = (Keyword)cGroup_7.eContents().get(4);
+		private final Keyword cSemicolonKeyword_7_4 = (Keyword)cGroup_7.eContents().get(4);
+		private final Keyword cRightCurlyBracketKeyword_7_5 = (Keyword)cGroup_7.eContents().get(5);
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//Role:
 		//
-		//	{Role} isAdmin?="isAdmin"? "Role" "{" "Name" "=" name=EString ("types" "{" types+=EString ("," types+=EString)* "}")?
+		//	{Role} isAdmin?="isAdmin"? "Role" "{" "Name" "=" name=EString ("Types" "{" types+=EString (";" types+=EString)* ";"
 		//
-		//	"}";
+		//	"}")? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{Role} isAdmin?="isAdmin"? "Role" "{" "Name" "=" name=EString ("types" "{" types+=EString ("," types+=EString)* "}")?
+		//{Role} isAdmin?="isAdmin"? "Role" "{" "Name" "=" name=EString ("Types" "{" types+=EString (";" types+=EString)* ";"
 		//
-		//"}"
+		//"}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{Role}
@@ -467,10 +474,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_6_0() { return cNameEStringParserRuleCall_6_0; }
 
-		//("types" "{" types+=EString ("," types+=EString)* "}")?
+		//("Types" "{" types+=EString (";" types+=EString)* ";" "}")?
 		public Group getGroup_7() { return cGroup_7; }
 
-		//"types"
+		//"Types"
 		public Keyword getTypesKeyword_7_0() { return cTypesKeyword_7_0; }
 
 		//"{"
@@ -482,11 +489,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getTypesEStringParserRuleCall_7_2_0() { return cTypesEStringParserRuleCall_7_2_0; }
 
-		//("," types+=EString)*
+		//(";" types+=EString)*
 		public Group getGroup_7_3() { return cGroup_7_3; }
 
-		//","
-		public Keyword getCommaKeyword_7_3_0() { return cCommaKeyword_7_3_0; }
+		//";"
+		public Keyword getSemicolonKeyword_7_3_0() { return cSemicolonKeyword_7_3_0; }
 
 		//types+=EString
 		public Assignment getTypesAssignment_7_3_1() { return cTypesAssignment_7_3_1; }
@@ -494,8 +501,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getTypesEStringParserRuleCall_7_3_1_0() { return cTypesEStringParserRuleCall_7_3_1_0; }
 
+		//";"
+		public Keyword getSemicolonKeyword_7_4() { return cSemicolonKeyword_7_4; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_7_4() { return cRightCurlyBracketKeyword_7_4; }
+		public Keyword getRightCurlyBracketKeyword_7_5() { return cRightCurlyBracketKeyword_7_5; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
@@ -514,12 +524,12 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cNameEStringParserRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Keyword cFirstnameKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Keyword cUserFirstNameKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
 		private final Assignment cFirstnameAssignment_7_2 = (Assignment)cGroup_7.eContents().get(2);
 		private final RuleCall cFirstnameEStringParserRuleCall_7_2_0 = (RuleCall)cFirstnameAssignment_7_2.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
-		private final Keyword cLastnameKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
+		private final Keyword cUserLastNameKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
 		private final Assignment cLastnameAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
 		private final RuleCall cLastnameEStringParserRuleCall_8_2_0 = (RuleCall)cLastnameAssignment_8_2.eContents().get(0);
@@ -547,16 +557,16 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//User:
 		//
-		//	{User} disabled?="disabled"? "User" "{" "Name" "=" name=EString ("firstname" "=" firstname=EString)? ("lastname" "="
+		//	{User} disabled?="disabled"? "User" "{" "Name" "=" name=EString ("userFirstName" "=" firstname=EString)?
 		//
-		//	lastname=EString)? ("login" "=" login=EString)? ("password" "=" password=EString)? ("email" "=" email=EString)?
+		//	("userLastName" "=" lastname=EString)? ("Login" "=" login=EString)? ("Password" "=" password=EString)? ("Email" "="
 		//
-		//	("Role" "=" hasRole=Role)? "}";
+		//	email=EString)? ("Role" "=" hasRole=Role)? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{User} disabled?="disabled"? "User" "{" "Name" "=" name=EString ("firstname" "=" firstname=EString)? ("lastname" "="
+		//{User} disabled?="disabled"? "User" "{" "Name" "=" name=EString ("userFirstName" "=" firstname=EString)? ("userLastName"
 		//
-		//lastname=EString)? ("login" "=" login=EString)? ("password" "=" password=EString)? ("email" "=" email=EString)?
+		//"=" lastname=EString)? ("Login" "=" login=EString)? ("Password" "=" password=EString)? ("Email" "=" email=EString)?
 		//
 		//("Role" "=" hasRole=Role)? "}"
 		public Group getGroup() { return cGroup; }
@@ -588,11 +598,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_6_0() { return cNameEStringParserRuleCall_6_0; }
 
-		//("firstname" "=" firstname=EString)?
+		//("userFirstName" "=" firstname=EString)?
 		public Group getGroup_7() { return cGroup_7; }
 
-		//"firstname"
-		public Keyword getFirstnameKeyword_7_0() { return cFirstnameKeyword_7_0; }
+		//"userFirstName"
+		public Keyword getUserFirstNameKeyword_7_0() { return cUserFirstNameKeyword_7_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_7_1() { return cEqualsSignKeyword_7_1; }
@@ -603,11 +613,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getFirstnameEStringParserRuleCall_7_2_0() { return cFirstnameEStringParserRuleCall_7_2_0; }
 
-		//("lastname" "=" lastname=EString)?
+		//("userLastName" "=" lastname=EString)?
 		public Group getGroup_8() { return cGroup_8; }
 
-		//"lastname"
-		public Keyword getLastnameKeyword_8_0() { return cLastnameKeyword_8_0; }
+		//"userLastName"
+		public Keyword getUserLastNameKeyword_8_0() { return cUserLastNameKeyword_8_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_8_1() { return cEqualsSignKeyword_8_1; }
@@ -618,10 +628,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getLastnameEStringParserRuleCall_8_2_0() { return cLastnameEStringParserRuleCall_8_2_0; }
 
-		//("login" "=" login=EString)?
+		//("Login" "=" login=EString)?
 		public Group getGroup_9() { return cGroup_9; }
 
-		//"login"
+		//"Login"
 		public Keyword getLoginKeyword_9_0() { return cLoginKeyword_9_0; }
 
 		//"="
@@ -633,10 +643,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getLoginEStringParserRuleCall_9_2_0() { return cLoginEStringParserRuleCall_9_2_0; }
 
-		//("password" "=" password=EString)?
+		//("Password" "=" password=EString)?
 		public Group getGroup_10() { return cGroup_10; }
 
-		//"password"
+		//"Password"
 		public Keyword getPasswordKeyword_10_0() { return cPasswordKeyword_10_0; }
 
 		//"="
@@ -648,10 +658,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getPasswordEStringParserRuleCall_10_2_0() { return cPasswordEStringParserRuleCall_10_2_0; }
 
-		//("email" "=" email=EString)?
+		//("Email" "=" email=EString)?
 		public Group getGroup_11() { return cGroup_11; }
 
-		//"email"
+		//"Email"
 		public Keyword getEmailKeyword_11_0() { return cEmailKeyword_11_0; }
 
 		//"="
@@ -753,14 +763,14 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//CMS:
 		//
-		//	{CMS} "CMS" "{" "Name" "=" name=EString ("type" "=" type=CMSEnum) ("address_url" "=" address_url=EString) ("username"
+		//	{CMS} "CMS" "{" "Name" "=" name=EString ("Type" "=" type=CMSEnum) ("Address_url" "=" address_url=EString) ("Username"
 		//
-		//	"=" username=EString) ("password" "=" password=EString) "}";
+		//	"=" username=EString) ("Password" "=" password=EString) "}";
 		public ParserRule getRule() { return rule; }
 
-		//{CMS} "CMS" "{" "Name" "=" name=EString ("type" "=" type=CMSEnum) ("address_url" "=" address_url=EString) ("username"
+		//{CMS} "CMS" "{" "Name" "=" name=EString ("Type" "=" type=CMSEnum) ("Address_url" "=" address_url=EString) ("Username"
 		//
-		//"=" username=EString) ("password" "=" password=EString) "}"
+		//"=" username=EString) ("Password" "=" password=EString) "}"
 		public Group getGroup() { return cGroup; }
 
 		//{CMS}
@@ -784,10 +794,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getNameEStringParserRuleCall_5_0() { return cNameEStringParserRuleCall_5_0; }
 
-		//"type" "=" type=CMSEnum
+		//"Type" "=" type=CMSEnum
 		public Group getGroup_6() { return cGroup_6; }
 
-		//"type"
+		//"Type"
 		public Keyword getTypeKeyword_6_0() { return cTypeKeyword_6_0; }
 
 		//"="
@@ -799,10 +809,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//CMSEnum
 		public RuleCall getTypeCMSEnumEnumRuleCall_6_2_0() { return cTypeCMSEnumEnumRuleCall_6_2_0; }
 
-		//"address_url" "=" address_url=EString
+		//"Address_url" "=" address_url=EString
 		public Group getGroup_7() { return cGroup_7; }
 
-		//"address_url"
+		//"Address_url"
 		public Keyword getAddress_urlKeyword_7_0() { return cAddress_urlKeyword_7_0; }
 
 		//"="
@@ -814,10 +824,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getAddress_urlEStringParserRuleCall_7_2_0() { return cAddress_urlEStringParserRuleCall_7_2_0; }
 
-		//"username" "=" username=EString
+		//"Username" "=" username=EString
 		public Group getGroup_8() { return cGroup_8; }
 
-		//"username"
+		//"Username"
 		public Keyword getUsernameKeyword_8_0() { return cUsernameKeyword_8_0; }
 
 		//"="
@@ -829,10 +839,10 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getUsernameEStringParserRuleCall_8_2_0() { return cUsernameEStringParserRuleCall_8_2_0; }
 
-		//"password" "=" password=EString
+		//"Password" "=" password=EString
 		public Group getGroup_9() { return cGroup_9; }
 
-		//"password"
+		//"Password"
 		public Keyword getPasswordKeyword_9_0() { return cPasswordKeyword_9_0; }
 
 		//"="
@@ -1097,9 +1107,9 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//ContentModel:
 	//
-	//	{ContentModel} "ContentModel" "{" "Name" "=" name=EString ("Contains" "{" hasElements+=NamedElement (","
+	//	{ContentModel} "ContentModel" "{" "Name" "=" name=EString ("Contains" "{" hasElements+=NamedElement (";"
 	//
-	//	hasElements+=NamedElement)* "}")? "}";
+	//	hasElements+=NamedElement)* ";" "}")? "}";
 	public ContentModelElements getContentModelAccess() {
 		return (pContentModel != null) ? pContentModel : (pContentModel = new ContentModelElements());
 	}
@@ -1119,8 +1129,6 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 		return getNamedElementAccess().getRule();
 	}
 
-	////ContentModel | ContentType | Property | SingleType | ArrayType | Role | User | Version | CMS | AccessLevel;
-	//
 	//EString returns ecore::EString:
 	//
 	//	STRING | ID;
@@ -1134,11 +1142,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ContentType:
 	//
-	//	visible?="visible"? "ContentType" "{" "Name" "=" name=EString ("guid" "=" guid=EInt)? "hasProperties" "{"
+	//	visible?="visible"? "ContentType" "{" "Name" "=" name=EString "Properties" "{" hasProperties+=Property (";"
 	//
-	//	hasProperties+=Property ("," hasProperties+=Property)* "}" ("hasVersions" "{" hasVersions+=Version (","
+	//	hasProperties+=Property)* ";" "}" ("Guid" "=" guid=EInt)? ("Versions" "{" hasVersions+=Version (";"
 	//
-	//	hasVersions+=Version)* "}")? ("modifiedBy" "=" modifiedBy=User)? "}";
+	//	hasVersions+=Version)* ";" "}")? ("ModifiedBy" "=" modifiedBy=User)? "}";
 	public ContentTypeElements getContentTypeAccess() {
 		return (pContentType != null) ? pContentType : (pContentType = new ContentTypeElements());
 	}
@@ -1149,7 +1157,7 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Property:
 	//
-	//	"Property" "{" "Name" "=" name=EString "accessModifer" "=" accessModifer=AccessLevelEnum ("Type" "=" type=TypeEnum)?
+	//	"Property" "{" "Name" "=" name=EString "AccessModifier" "=" accessModifer=AccessLevelEnum "Type" "=" type=TypeEnum
 	//
 	//	"}";
 	public PropertyElements getPropertyAccess() {
@@ -1162,9 +1170,9 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Role:
 	//
-	//	{Role} isAdmin?="isAdmin"? "Role" "{" "Name" "=" name=EString ("types" "{" types+=EString ("," types+=EString)* "}")?
+	//	{Role} isAdmin?="isAdmin"? "Role" "{" "Name" "=" name=EString ("Types" "{" types+=EString (";" types+=EString)* ";"
 	//
-	//	"}";
+	//	"}")? "}";
 	public RoleElements getRoleAccess() {
 		return (pRole != null) ? pRole : (pRole = new RoleElements());
 	}
@@ -1175,11 +1183,11 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//User:
 	//
-	//	{User} disabled?="disabled"? "User" "{" "Name" "=" name=EString ("firstname" "=" firstname=EString)? ("lastname" "="
+	//	{User} disabled?="disabled"? "User" "{" "Name" "=" name=EString ("userFirstName" "=" firstname=EString)?
 	//
-	//	lastname=EString)? ("login" "=" login=EString)? ("password" "=" password=EString)? ("email" "=" email=EString)?
+	//	("userLastName" "=" lastname=EString)? ("Login" "=" login=EString)? ("Password" "=" password=EString)? ("Email" "="
 	//
-	//	("Role" "=" hasRole=Role)? "}";
+	//	email=EString)? ("Role" "=" hasRole=Role)? "}";
 	public UserElements getUserAccess() {
 		return (pUser != null) ? pUser : (pUser = new UserElements());
 	}
@@ -1201,9 +1209,9 @@ public class JDSLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//CMS:
 	//
-	//	{CMS} "CMS" "{" "Name" "=" name=EString ("type" "=" type=CMSEnum) ("address_url" "=" address_url=EString) ("username"
+	//	{CMS} "CMS" "{" "Name" "=" name=EString ("Type" "=" type=CMSEnum) ("Address_url" "=" address_url=EString) ("Username"
 	//
-	//	"=" username=EString) ("password" "=" password=EString) "}";
+	//	"=" username=EString) ("Password" "=" password=EString) "}";
 	public CMSElements getCMSAccess() {
 		return (pCMS != null) ? pCMS : (pCMS = new CMSElements());
 	}

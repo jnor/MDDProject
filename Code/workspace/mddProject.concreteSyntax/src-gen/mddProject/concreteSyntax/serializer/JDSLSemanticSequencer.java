@@ -121,9 +121,9 @@ public class JDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         visible?='visible'? 
 	 *         name=EString 
-	 *         guid=EInt? 
 	 *         hasProperties+=Property 
 	 *         hasProperties+=Property* 
+	 *         guid=EInt? 
 	 *         (hasVersions+=Version hasVersions+=Version*)? 
 	 *         modifiedBy=User?
 	 *     )
@@ -135,10 +135,23 @@ public class JDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=EString accessModifer=AccessLevelEnum type=TypeEnum?)
+	 *     (name=EString accessModifer=AccessLevelEnum type=TypeEnum)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, JdslPackage.Literals.NAMED_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JdslPackage.Literals.NAMED_ELEMENT__NAME));
+			if(transientValues.isValueTransient(semanticObject, JdslPackage.Literals.PROPERTY__ACCESS_MODIFER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JdslPackage.Literals.PROPERTY__ACCESS_MODIFER));
+			if(transientValues.isValueTransient(semanticObject, JdslPackage.Literals.PROPERTY__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JdslPackage.Literals.PROPERTY__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPropertyAccess().getNameEStringParserRuleCall_4_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPropertyAccess().getAccessModiferAccessLevelEnumEnumRuleCall_7_0(), semanticObject.getAccessModifer());
+		feeder.accept(grammarAccess.getPropertyAccess().getTypeTypeEnumEnumRuleCall_10_0(), semanticObject.getType());
+		feeder.finish();
 	}
 	
 	
