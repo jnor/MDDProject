@@ -15,8 +15,6 @@ ContentModel returns ContentModel:
 NamedElement returns NamedElement:
 	ContentType  | CMS;
 
-//ContentModel | ContentType | Property | SingleType | ArrayType | Role | User | Version | CMS | AccessLevel;
-
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -36,8 +34,8 @@ Property returns Property:
 	'Property'
 	'{'
 	    'Name' '=' name=EString
-		'AccessModifer' '=' accessModifer=AccessLevelEnum
-		('Type' '=' type=TypeEnum)?
+		'AccessModifier' '=' accessModifer=AccessLevelEnum
+		'Type' '=' type=TypeEnum
 	'}';
 
 Role returns Role:

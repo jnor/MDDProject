@@ -9,13 +9,11 @@ ContentModel returns ContentModel:
 	'ContentModel'
 	'{'
 	    'Name' '=' name=EString
-		('Contains' '{' hasElements+=NamedElement ( "," hasElements+=NamedElement)* '}' )?
+		('Contains' '{' hasElements+=NamedElement ( ";" hasElements+=NamedElement)* ';' '}' )?
 	'}';
 
 NamedElement returns NamedElement:
 	ContentType  | CMS;
-
-//ContentModel | ContentType | Property | SingleType | ArrayType | Role | User | Version | CMS | AccessLevel;
 
 
 EString returns ecore::EString:
@@ -26,18 +24,18 @@ ContentType returns ContentType:
 	'ContentType'
 	'{'
 	    'Name' '=' name=EString
-		('guid' '=' guid=EInt)?
-		'hasProperties' '{' hasProperties+=Property ( "," hasProperties+=Property)* '}' 
-		('hasVersions' '{' hasVersions+=Version ( "," hasVersions+=Version)* '}' )?
-		('modifiedBy' '=' modifiedBy=User)?
+		'Properties' '{' hasProperties+=Property ( ";" hasProperties+=Property)* ';' '}' 
+		('Guid' '=' guid=EInt)?
+		('Versions' '{' hasVersions+=Version ( ";" hasVersions+=Version)* ';' '}' )?
+		('ModifiedBy' '=' modifiedBy=User)?
 	'}';
 
 Property returns Property:
 	'Property'
 	'{'
 	    'Name' '=' name=EString
-		'accessModifer' '=' accessModifer=AccessLevelEnum
-		('Type' '=' type=TypeEnum)?
+		'AccessModifier' '=' accessModifer=AccessLevelEnum
+		'Type' '=' type=TypeEnum
 	'}';
 
 Role returns Role:
@@ -46,7 +44,7 @@ Role returns Role:
 	'Role'
 	'{'
 	     'Name' '=' name=EString
-		('types' '{' types+=EString ( "," types+=EString)* '}' )?
+		('Types' '{' types+=EString ( ";" types+=EString)* ';' '}' )?
 	'}';
 
 User returns User:
@@ -55,11 +53,11 @@ User returns User:
 	'User'
 	'{'
 	  'Name' '=' name=EString
-		('firstname' '=' firstname=EString)?
-		('lastname' '=' lastname=EString)?
-		('login' '=' login=EString)?
-		('password' '='  password=EString)?
-		('email' '=' email=EString)?
+		('userFirstName' '=' firstname=EString)?
+		('userLastName' '=' lastname=EString)?
+		('Login' '=' login=EString)?
+		('Password' '='  password=EString)?
+		('Email' '=' email=EString)?
 		('Role' '=' hasRole=Role)?
 	'}';
 
@@ -73,10 +71,10 @@ CMS returns CMS:
 	'CMS'
 	'{'
 	    'Name' '=' name=EString
-		('type' '=' type=CMSEnum)
-		('address_url''=' address_url=EString)
-		('username' '=' username=EString)
-		('password' '=' password=EString)
+		('Type' '=' type=CMSEnum)
+		('Address_url''=' address_url=EString)
+		('Username' '=' username=EString)
+		('Password' '=' password=EString)
 	'}';
 
 
@@ -98,3 +96,4 @@ enum CMSEnum:
 enum AccessLevelEnum:
 	public='public' | private='private'	
 	;
+
