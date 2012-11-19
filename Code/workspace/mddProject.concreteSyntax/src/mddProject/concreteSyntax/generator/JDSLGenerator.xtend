@@ -330,8 +330,8 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	def toN2Class(ContentType ct,IFileSystemAccess fsa)
 	{
 				fsa.generateFile(ct.name.toFirstUpper + ".cs", toN2ClassFile(ct))
-	    		fsa.generateFile("default" +".aspx.cs", toN2CodeBehindFile(ct))
-				fsa.generateFile("default" +".aspx", toN2AspxFile(ct))
+	    		fsa.generateFile(ct.name.toFirstUpper +".aspx.cs", toN2CodeBehindFile(ct))
+				fsa.generateFile(ct.name.toFirstUpper +".aspx", toN2AspxFile(ct))
 	}
 	
 	def toN2ClassFile(ContentType ct)
@@ -351,8 +351,10 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 			«FOR p : ct.hasProperties»
 				«
 				p.toN2Property
+			
 				»
 			«ENDFOR»
+	}
 	}
 	'''
 	
@@ -387,7 +389,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	def toN2PropertyDateTime(Property p)
 	'''
 		[N2.Details.Editable("«p.name.toString.toFirstUpper»", typeof(SelectedDate), "SelectedDate", 20)]
-			public DateTime «p.name.toString.toLowerCase»
+			public DateTime «p.name.toString.toFirstUpper»
 			{
 				get {return this.«p.name.toString.toLowerCase»;}
 				set {this.«p.name.toString.toLowerCase» = value;}
@@ -397,7 +399,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	def toN2PropertyNormal(Property p)
 	'''
 		[N2.Details.EditableTextBox("«p.name.toString.toFirstUpper»",20)]
-			public String «p.name.toString.toLowerCase»
+			public String «p.name.toString.toFirstUpper»
 			{
 				get {return this.«p.name.toString.toLowerCase»;}
 				set {this.«p.name.toString.toLowerCase» = value;}
@@ -414,9 +416,12 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	
 	namespace MySite
 	{
-		public partial class _Default : N2.Web.UI.Page<Items.«ct.name.toFirstUpper»>
+		public partial class _«ct.name.toFirstUpper» : N2.Web.UI.Page<Items.«ct.name.toFirstUpper»>
 		{
-			protected void Page_Load(object sender, EventArgs e);	
+			protected void Page_Load(object sender, EventArgs e)
+			{
+				
+			}	
 		}
 	}
 	'''
@@ -424,7 +429,7 @@ public class «ct.name.toString.toFirstUpper»Editor extends ContentEditor<«ct.nam
 	
 	def toN2AspxFile(ContentType ct)
 	'''
-	<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+	<%@ Page Language="C#" AutoEventWireup="true" CodeFile="«ct.name.toFirstUpper».aspx.cs" Inherits="_Default" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
