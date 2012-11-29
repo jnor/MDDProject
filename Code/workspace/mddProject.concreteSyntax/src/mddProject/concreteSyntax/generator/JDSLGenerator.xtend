@@ -114,7 +114,7 @@ class JDSLGenerator implements IGenerator {
 						«ct.name.toLowerCase».set«p.name.toString.toFirstUpper»(get«p.name.toString.toFirstUpper»());
 			«ENDFOR»
 
-	return «ct.name»;
+	return «ct.name.toLowerCase»;
 	}
 	}
 	'''
