@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% MMDProject report
+%
+% Group: Jease awesome5.
+%   Nataliya Vlizko nataliya.vlizko@gmail.com
+%   Jonas Norlin jnor@itu.dk
+%   Louis Fleron louis@fleron.dk
+%   Xia Liu bonnie777772003@hotmail.com
+%   Gunn Weihe Reinert gwre@itu.dk
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[runningheads,a4paper]{llncs}
+
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+
+\usepackage{url}
+\urldef{\mailsa}\path|{alfred.hofmann, ursula.barth, ingrid.haas,
+frank.holzwarth,|
+\urldef{\mailsb}\path|anna.kramer, leonie.kunz, christine.reiss, nicole.sator,|
+\urldef{\mailsc}\path|erika.siebert-cole, peter.strasser, lncs}@springer.com|    
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+\begin{document}
+
+    \frontmatter % turns off chapter numbering and uses roman numerals for page numbers;
+
+        \include{chapters/frontpage}
+
+    \mainmatter % turns on chapter numbering, resets page numbering and uses arabic numerals for page numbers;
+
+        \tableofcontents
+
+        \include{chapters/abstract}
+        \include{chapters/introduction}
+        \include{chapters/background}
+        \include{chapters/technical-solution}
+        \include{chapters/analysis}
+        \include{chapters/evaluation}
+        \include{chapters/threats-to-validity}
+        \include{chapters/related-work}
+        \include{chapters/conclusion}
+        \include{chapters/bibliography}
+
+    \appendix % resets chapter numbering, uses letters for chapter numbers and doesn't fiddle with page numbering;
+
+        \include{chapters/appendix}
+
+    \backmatter % turns off chapter numbering and doesn't fiddle with page numbering.
+        %The hard-and-fast rule: Don't use \appendix after \backmatter, because chapter
+        %numbering has already been turned off by \backmatter.
+
+\end{document}

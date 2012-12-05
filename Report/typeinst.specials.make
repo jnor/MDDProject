@@ -1,0 +1,1 @@
+PAPERSIZE=a4
